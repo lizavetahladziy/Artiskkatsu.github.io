@@ -1,6 +1,6 @@
 # Lizaveta Hladziy — portfolio
 
-A bilingual, static portfolio for GitHub Pages. No build step, package installation, external fonts or third-party JavaScript are required.
+A bilingual, static portfolio for GitHub Pages, with a personal tulip identity and a warm cream, berry and blush palette. No build step, package installation, external fonts or third-party JavaScript are required.
 
 ## Local preview
 
@@ -10,6 +10,7 @@ From this directory, run `python -m http.server 8765 --bind 127.0.0.1`, then ope
 - `styles.css`: responsive layout, typography and design tokens.
 - `app.js`: PL/EN copy, category filters and gallery interactions.
 - `projects.js`: original project descriptions, media paths and gallery ordering.
+- `assets/flower.svg` and `assets/flower-note.svg`: the original vector identity and notebook illustration.
 - `assets/previews/`: compressed WebP copies for the overview; project dialogs use the original files.
 
 The existing `CNAME` and original image, PDF and video files are preserved. The redesign needs to be merged into the publishing branch to update the public site.

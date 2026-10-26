@@ -1,52 +1,100 @@
 'use strict';
 
 const copy = {
-  pl: {
-    skip: 'Przejdź do projektów', navWork: 'Projekty', navAbout: 'O mnie', navContact: 'Porozmawiajmy',
-    heroLineOne: 'Dobry design.', heroLineTwo: 'Własny charakter.',
-    heroText: 'Łączę wyrazisty obraz z przemyślaną strukturą. Projektuję strony, identyfikacje i rzeczy, którym warto przyjrzeć się bliżej.',
-    viewWork: 'Zobacz moje prace', heroCaption: 'Mały wgląd w mój świat.', heroFooter: 'Pomysł. Forma. Charakter.',
-    workEyebrow: '01 / Portfolio', workTitle: 'Wybrane', workTitleItalic: 'prace.',
-    workIntro: 'Różne media. Ten sam głód dobrych pomysłów. Koncepcje, eksperymenty i projekty wizualne.',
-    archiveEnd: 'Zawsze jest miejsce na kolejny dobry pomysł.', startProject: 'Może Twój? ↗',
-    aboutEyebrow: '02 / Kilka słów o mnie', aboutTitle: 'Estetyka z', aboutItalic: 'intencją.',
-    aboutLead: 'Lubię, kiedy rzeczy dobrze wyglądają. Jeszcze bardziej — kiedy mają sens.',
-    aboutText: 'Pracuję nad projektami wizualnymi, które łączą estetykę z porządkiem. Interesuje mnie design, który nie potrzebuje nadmiaru efektów, żeby wyglądać pewnie.',
-    skillWeb: 'Strony, interfejsy, systemy komponentów', skillIdentity: 'Znaki, kolory, typografia, branding',
-    skillEditorial: 'Layouty, plakaty, opakowania, social media', toolkit: 'Mój warsztat', viewCv: 'Zajrzyj do mojego CV',
-    contactEyebrow: '03 / Kontakt', contactTitle: 'Zróbmy coś', contactItalic: 'dobrego.',
-    contactText: 'Masz pomysł, pytanie albo po prostu chcesz się przywitać? Napisz do mnie.',
-    backTop: 'Do góry ↑', footerNote: 'Z pomysłem. I charakterem.', close: 'Zamknij', openSite: 'Otwórz stronę',
-    moreWork: 'Jeszcze trochę inspiracji?', next: 'Następny projekt', zoom: 'Powiększ obraz', openProject: 'Otwórz projekt',
-    imagePreview: 'Podgląd obrazu', filterLabel: 'Kategorie projektów', countLabel: 'projektów',
-    description: 'Lizaveta Hladziy — portfolio projektantki wizualnej. Web design, identyfikacja wizualna, editorial i opakowania.',
-    categories: { all: 'Wszystko', web: 'Web design', identity: 'Identyfikacje', editorial: 'Editorial', presentation: 'Prezentacje', packaging: 'Opakowania', edits: 'Wideo' }
+  "pl": {
+    "skip": "Przejdź do projektów",
+    "brandNote": "projektowanie graficzne",
+    "navWork": "Projekty",
+    "navAbout": "O mnie",
+    "navContact": "Kontakt",
+    "hello": "Miło, że tu jesteś!",
+    "heroLineOne": "Cześć, jestem",
+    "heroText": "Projektuję strony, identyfikacje wizualne i materiały do druku. Tutaj znajdziesz moje prace.",
+    "viewWork": "Zobacz projekty",
+    "workTitle": "Moje projekty",
+    "workIntro": "Strony, marki i trochę eksperymentów. Kliknij projekt, żeby zobaczyć więcej.",
+    "aboutEyebrow": "Po drugiej stronie ekranu",
+    "aboutTitle": "Trochę o mnie",
+    "aboutLead": "Jestem Lizaveta. Zajmuję się projektowaniem wizualnym — od stron internetowych po rzeczy, które można wziąć do ręki.",
+    "aboutText": "W moich pracach jest miejsce na kolor i eksperymenty, ale też na prostą typografię i czytelny układ.",
+    "whatIDo": "Czym się zajmuję",
+    "skillWeb": "Strony i interfejsy",
+    "skillIdentity": "Logotypy i identyfikacje",
+    "skillEditorial": "Plakaty, opakowania, layouty",
+    "toolkit": "Pod ręką",
+    "viewCv": "Moje CV",
+    "contactTitle": "Napisz do mnie",
+    "contactText": "W sprawie projektu, współpracy albo po prostu, żeby się przywitać.",
+    "backTop": "Do góry ↑",
+    "close": "Zamknij",
+    "openSite": "Otwórz stronę",
+    "moreWork": "Zobacz też",
+    "next": "Następny projekt",
+    "zoom": "Powiększ obraz",
+    "openProject": "Otwórz projekt",
+    "imagePreview": "Podgląd obrazu",
+    "filterLabel": "Kategorie projektów",
+    "countLabel": "projektów",
+    "description": "Lizaveta Hladziy — portfolio projektantki wizualnej. Web design, identyfikacja wizualna, editorial i opakowania.",
+    "categories": {
+      "all": "Wszystko",
+      "web": "Strony",
+      "identity": "Identyfikacje",
+      "editorial": "Grafika",
+      "presentation": "Prezentacje",
+      "packaging": "Opakowania",
+      "edits": "Wideo"
+    }
   },
-  en: {
-    skip: 'Skip to projects', navWork: 'Work', navAbout: 'About', navContact: 'Let’s talk',
-    heroLineOne: 'Good design.', heroLineTwo: 'A little character.',
-    heroText: 'I bring bold visuals and thoughtful structure together. Designing websites, identities and things worth a closer look.',
-    viewWork: 'Explore my work', heroCaption: 'A little glimpse into my world.', heroFooter: 'Idea. Form. Character.',
-    workEyebrow: '01 / Portfolio', workTitle: 'Selected', workTitleItalic: 'work.',
-    workIntro: 'Different media. The same appetite for good ideas. Concepts, experiments and visual projects.',
-    archiveEnd: 'There’s always room for another good idea.', startProject: 'Maybe yours? ↗',
-    aboutEyebrow: '02 / A little about me', aboutTitle: 'Aesthetics with', aboutItalic: 'intention.',
-    aboutLead: 'I like things that look good. Even more so when they make sense.',
-    aboutText: 'I work on visual projects that combine aesthetics with order. I am interested in design that does not need excessive effects to feel confident.',
-    skillWeb: 'Websites, interfaces, component systems', skillIdentity: 'Marks, colour, typography, branding',
-    skillEditorial: 'Layouts, posters, packaging, social media', toolkit: 'My toolkit', viewCv: 'Take a look at my CV',
-    contactEyebrow: '03 / Get in touch', contactTitle: 'Let’s make', contactItalic: 'something good.',
-    contactText: 'Have an idea, a question, or just want to say hello? I’d love to hear from you.',
-    backTop: 'Back to top ↑', footerNote: 'Made with thought. And character.', close: 'Close', openSite: 'Open website',
-    moreWork: 'A little more inspiration?', next: 'Next project', zoom: 'Enlarge image', openProject: 'Open project',
-    imagePreview: 'Image preview', filterLabel: 'Project categories', countLabel: 'projects',
-    description: 'Lizaveta Hladziy — visual designer portfolio. Web design, visual identity, editorial and packaging.',
-    categories: { all: 'All work', web: 'Web design', identity: 'Identity', editorial: 'Editorial', presentation: 'Presentations', packaging: 'Packaging', edits: 'Video' }
+  "en": {
+    "skip": "Skip to projects",
+    "brandNote": "graphic design",
+    "navWork": "Projects",
+    "navAbout": "About me",
+    "navContact": "Contact",
+    "hello": "Lovely to see you here!",
+    "heroLineOne": "Hi, I’m",
+    "heroText": "I design websites, visual identities and things for print. Here’s a selection of my work.",
+    "viewWork": "See my projects",
+    "workTitle": "My projects",
+    "workIntro": "Websites, identities and a few experiments. Pick a project to take a closer look.",
+    "aboutEyebrow": "Behind the screen",
+    "aboutTitle": "A little about me",
+    "aboutLead": "I’m Lizaveta, a visual designer. I work on websites and on things you can hold in your hands.",
+    "aboutText": "My work makes room for colour and experiments, alongside simple typography and clear layouts.",
+    "whatIDo": "What I work on",
+    "skillWeb": "Websites and interfaces",
+    "skillIdentity": "Logos and brand identities",
+    "skillEditorial": "Posters, packaging and layouts",
+    "toolkit": "My tools",
+    "viewCv": "My CV",
+    "contactTitle": "Drop me a line",
+    "contactText": "About a project, working together, or just to say hello.",
+    "backTop": "Back to top ↑",
+    "close": "Close",
+    "openSite": "Open website",
+    "moreWork": "You might also like",
+    "next": "Next project",
+    "zoom": "Enlarge image",
+    "openProject": "Open project",
+    "imagePreview": "Image preview",
+    "filterLabel": "Project categories",
+    "countLabel": "projects",
+    "description": "Lizaveta Hladziy — visual designer portfolio. Web design, visual identity, editorial and packaging.",
+    "categories": {
+      "all": "All projects",
+      "web": "Websites",
+      "identity": "Identity",
+      "editorial": "Graphics",
+      "presentation": "Presentations",
+      "packaging": "Packaging",
+      "edits": "Video"
+    }
   }
 };
 
 const categoryOrder = ['all', 'web', 'identity', 'editorial', 'presentation', 'packaging', 'edits'];
-const displayOrder = ['11', '06', '04', '02', '10', '07', '01', '05', '08', '12', '03', '09'];
+const displayOrder = ['04', '06', '11', '02', '10', '07', '01', '05', '08', '12', '03', '09'];
 const projects = displayOrder.map(number => projectData.find(project => project.number === number));
 const grid = document.getElementById('project-grid');
 const filters = document.getElementById('filters');
@@ -76,10 +124,6 @@ function updateLanguage() {
   document.querySelector('meta[name="description"]').content = copy[language].description;
   document.querySelectorAll('[data-i18n]').forEach(element => { element.textContent = copy[language][element.dataset.i18n]; });
   document.querySelectorAll('[data-lang]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.lang === language)));
-  document.querySelectorAll('.art-piece').forEach(button => {
-    const project = projects.find(item => item.number === button.dataset.project);
-    button.setAttribute('aria-label', `${localize(project.short)} — ${copy[language].openProject}`);
-  });
   filters.setAttribute('aria-label', copy[language].filterLabel);
   imageDialog.setAttribute('aria-label', copy[language].imagePreview);
   renderFilters();
@@ -108,7 +152,8 @@ function renderGrid() {
   visible.forEach((project, index) => {
     const card = makeElement('article', 'project-card');
     card.dataset.project = project.number;
-    card.style.setProperty('--project-color', project.number === '11' ? '#e6e3db' : project.color);
+    const mounts = { '04': '#e4ebe0', '06': '#f2e6d4', '11': '#ece9e1', '02': '#e7ebee', '10': '#e9ebdc', '07': '#eee3de', '01': '#e8e2d9', '05': '#eee0dd', '08': '#e7e9df', '12': '#e4e9ee', '03': '#ede1e1' };
+    card.style.setProperty('--project-color', mounts[project.number] || '#e9e5dc');
     const button = makeElement('button', 'project-button');
     button.type = 'button';
     button.setAttribute('aria-label', `${localize(project.short)} — ${copy[language].openProject}`);
@@ -126,7 +171,7 @@ function renderGrid() {
       cover.append(makeElement('small', '', 'MOTION / VIDEO EDIT'), makeElement('strong', '', 'forestrock.tv'), makeElement('span', 'play-icon', '↗'));
       visual.append(cover);
     }
-    visual.append(makeElement('span', 'project-number', project.number), makeElement('span', 'project-open', '↗'));
+    visual.append(makeElement('span', 'project-open', '↗'));
     visual.setAttribute('aria-hidden', 'true');
     const info = makeElement('div', 'project-card-info');
     info.append(makeElement('h3', '', localize(project.short)), makeElement('p', '', localize(project.type)));
@@ -200,7 +245,6 @@ document.querySelectorAll('[data-lang]').forEach(button => button.addEventListen
   try { localStorage.setItem('portfolio-language', language); } catch { /* Optional preference only. */ }
   updateLanguage();
 }));
-document.querySelectorAll('.art-piece').forEach(button => button.addEventListener('click', () => openProject(button.dataset.project)));
 document.getElementById('close-project').addEventListener('click', () => projectDialog.close());
 document.getElementById('close-image').addEventListener('click', () => imageDialog.close());
 document.getElementById('next-project').addEventListener('click', () => {

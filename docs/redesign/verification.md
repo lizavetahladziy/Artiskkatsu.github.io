@@ -1,43 +1,31 @@
-# Editorial portfolio redesign — verification
+# Personal tulip identity — verification
 
-Verified locally on 2026-10-26 in the Codex Chromium browser. This is local verification, not confirmation of a public deployment.
+Verified locally on 2026-10-26. This revision replaces the editorial direction from PR #1 with a softer personal portfolio, following the owner's feedback.
 
-## Direction
+## Design
 
-Warm paper, ink, violet typography, lime accents and a monogram. A collage introduces real work; an asymmetric image grid replaces the sidebar selector. All twelve projects remain accessible through category filters and native project dialogs. The about and contact sections use the same typography and spacing system.
+Cream paper, berry text, dusty pink and sage accents. A custom SVG tulip appears in the wordmark, favicon and footer; a matching notebook illustration and envelope detail give the site a consistent personal identity. Smaller, non-italic headings, direct PL/EN copy and an equal two-column gallery replace the oversized typography, rotated project collage and slogans.
 
-## Content integrity
+No new dependencies, external assets or font requests. The original project data, gallery order within each project, media, PDFs and domain remain unchanged. Purr Home now leads the overview.
 
-- The complete `projectData` object compares identically to the previous `index.html` after JSON serialization, including all Polish/English descriptions and image ordering.
-- All 46 referenced original media files exist. Original files, PDFs and `CNAME` are unchanged.
-- Eleven overview thumbnails total 463,292 bytes; full galleries retain original assets.
-- Chota continues to hide its external-site button; Forestrock retains its website link and video.
-
-## Verification
+## Checks
 
 - `node --check app.js`, `node --check projects.js`, `git diff --check`: passed.
-- Opened each of the twelve projects in the browser: expected gallery counts 4, 4, 6, 3, 7, 3, 1, 2, 8, 3, 4, and one video.
-- Web filter displays Purr Home, Chota and Store; Video filter displays Forestrock. Filter buttons retain focus after selection.
-- PL/EN changes page content, filters and project metadata. English preference survives reload.
-- Enlarging Missing Objects opens the correct original; Escape closes only the top image dialog and restores focus to the thumbnail. Closing a project restores focus to its card.
-- Video controls, metadata loading, website link and pause-on-close checked. No autoplay. A single-project category hides Next.
-- Polish viewport checks at 320, 390, 768, 1024 and 1440 pixels: no horizontal overflow. English checks at 320, 768 and 1440 pixels: no horizontal overflow.
-- Mobile Purr Home dialog: six images, no internal horizontal overflow.
-- No browser console errors/warnings or broken loaded overview images were reported.
-- CSS disables smooth scrolling/transitions for reduced-motion preferences. Native dialogs handle focus trapping, inert background and Escape; visible focus styles and a skip link are provided.
+- PL and EN, each at 320, 390, 768, 1024 and 1440 pixels: no horizontal overflow; no empty translation fields.
+- Visually checked the mobile introduction at 320 and 390 pixels, and desktop introduction, work grid and contact section.
+- All filters: websites 3, identity 2, graphics 4, presentations 1, packaging 1, video 1, all 12.
+- Mobile Purr Home gallery: all six images, no internal overflow. Image enlargement uses the original PNG. Escape closes the top dialog and returns focus; project close returns focus to the card and releases scrolling.
+- No console errors or warnings during these checks.
+- Project descriptions and original files are unchanged. Existing video, language persistence and external-link behaviour remain in the retained interaction code; their previous checks are documented in the Git history.
 
-External email delivery, LinkedIn and end-to-end video playback were not exercised. The public site is unchanged until this branch is merged and GitHub Pages deploys it.
+These checks verify the local branch. Publication requires merging the corresponding PR and completion of GitHub Pages deployment.
 
-## Screenshots
-
-Desktop, default browser viewport:
+## Previews
 
 ![Desktop](desktop.png)
 
-Work overview:
-
 ![Work](work.png)
 
-Mobile, 390 × 844:
+![Contact](contact.png)
 
-![Mobile](mobile.png)
+![Mobile — 390 × 844](mobile.png)
