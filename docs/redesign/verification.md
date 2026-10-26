@@ -32,3 +32,11 @@ These are local branch checks. Publication requires merging the PR and successfu
 ![About and contact](contact.png)
 
 ![Mobile catalogue](mobile.png)
+
+## Cache regression fix — 2026-10-26
+
+GitHub Pages serves the static assets with `Cache-Control: max-age=600`. The catalogue HTML could therefore be combined with the previous design's cached, unversioned CSS and JavaScript. That combination reproduced the reported screenshot: Arial heading, no catalogue layout, 12 old cards and old translated copy.
+
+The HTML now references CSS, JavaScript, project data and the favicon with a SHA-256 content version in their URL. `tools/update_asset_versions.py` updates the versions, and its `--check` mode detects stale references. Hashing normalizes CRLF to LF so Windows checkouts and GitHub Pages agree.
+
+A local HTTP regression fixture first served and cached the original assets. The unversioned catalogue reproduced the failure (`display: block`, zero index buttons, 12 old cards). With that cache still present, the versioned catalogue loaded correctly (`display: grid`, Instrument Serif, 12 index buttons, zero old cards). The footer now contains only copyright and the back-to-top link in both languages; the slogan element and translations are removed.

@@ -40,7 +40,6 @@ const copy = {
     "contents": "Spis treści",
     "currentlyViewing": "Na tych stronach",
     "previous": "Poprzedni projekt",
-    "footerNote": "Grafika, strony i dobre pomysły."
   },
   "en": {
     "skip": "Skip to projects",
@@ -81,7 +80,6 @@ const copy = {
     "contents": "Table of contents",
     "currentlyViewing": "On these pages",
     "previous": "Previous project",
-    "footerNote": "Graphics, websites and good ideas."
   }
 };
 

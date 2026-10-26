@@ -221,7 +221,6 @@ dialog::backdrop { background: #31101fcc; backdrop-filter: blur(7px); }
   .contact-links > p { font-size: 11px; }
   .email-link { font-size: clamp(15px,4.4vw,22px); width: 100%; margin-bottom: 15px; }
   .footer { flex-wrap: wrap; gap: 4px 20px; padding-block: 13px; font-size: 8px; }
-  .footer > span:nth-child(2) { display: none; }
   .dialog-toolbar { padding: 10px 18px; }
   .project-intro { padding: 25px 6%; }
   .project-intro h2 { font-size: 39px; }
