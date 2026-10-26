@@ -3,28 +3,18 @@
 const copy = {
   "pl": {
     "skip": "Przejdź do projektów",
-    "brandNote": "projektowanie graficzne",
+    "brandNote": "Graphic & web designer",
     "navWork": "Projekty",
     "navAbout": "O mnie",
     "navContact": "Kontakt",
-    "hello": "Miło, że tu jesteś!",
-    "heroLineOne": "Cześć, jestem",
-    "heroText": "Projektuję strony, identyfikacje wizualne i materiały do druku. Tutaj znajdziesz moje prace.",
-    "viewWork": "Zobacz projekty",
-    "workTitle": "Moje projekty",
-    "workIntro": "Strony, marki i trochę eksperymentów. Kliknij projekt, żeby zobaczyć więcej.",
-    "aboutEyebrow": "Po drugiej stronie ekranu",
-    "aboutTitle": "Trochę o mnie",
-    "aboutLead": "Jestem Lizaveta. Zajmuję się projektowaniem wizualnym — od stron internetowych po rzeczy, które można wziąć do ręki.",
-    "aboutText": "W moich pracach jest miejsce na kolor i eksperymenty, ale też na prostą typografię i czytelny układ.",
-    "whatIDo": "Czym się zajmuję",
-    "skillWeb": "Strony i interfejsy",
-    "skillIdentity": "Logotypy i identyfikacje",
-    "skillEditorial": "Plakaty, opakowania, layouty",
-    "toolkit": "Pod ręką",
+    "hello": "Cześć, jestem Lizaveta.",
+    "heroText": "To mój mały zbiór stron, identyfikacji i rzeczy do druku.",
+    "aboutEyebrow": "02 / Autorka",
+    "aboutLead": "Zajmuję się projektowaniem wizualnym — od stron internetowych po rzeczy, które można wziąć do ręki.",
+    "aboutText": "Lubię szukać tego jednego detalu, który nadaje projektowi charakter. Czasem jest nim kolor, czasem litera, czasem zupełnie prosty pomysł.",
     "viewCv": "Moje CV",
-    "contactTitle": "Napisz do mnie",
-    "contactText": "W sprawie projektu, współpracy albo po prostu, żeby się przywitać.",
+    "contactTitle": "Zacznijmy od cześć.",
+    "contactText": "Masz pomysł na projekt? Napisz, chętnie go poznam.",
     "backTop": "Do góry ↑",
     "close": "Zamknij",
     "openSite": "Otwórz stronę",
@@ -44,32 +34,28 @@ const copy = {
       "presentation": "Prezentacje",
       "packaging": "Opakowania",
       "edits": "Wideo"
-    }
+    },
+    "workEyebrow": "Wybrane prace / 2026",
+    "contactEyebrow": "03 / Następna strona?",
+    "contents": "Spis treści",
+    "currentlyViewing": "Na tych stronach",
+    "previous": "Poprzedni projekt",
+    "footerNote": "Grafika, strony i dobre pomysły."
   },
   "en": {
     "skip": "Skip to projects",
-    "brandNote": "graphic design",
+    "brandNote": "Graphic & web designer",
     "navWork": "Projects",
     "navAbout": "About me",
     "navContact": "Contact",
-    "hello": "Lovely to see you here!",
-    "heroLineOne": "Hi, I’m",
-    "heroText": "I design websites, visual identities and things for print. Here’s a selection of my work.",
-    "viewWork": "See my projects",
-    "workTitle": "My projects",
-    "workIntro": "Websites, identities and a few experiments. Pick a project to take a closer look.",
-    "aboutEyebrow": "Behind the screen",
-    "aboutTitle": "A little about me",
-    "aboutLead": "I’m Lizaveta, a visual designer. I work on websites and on things you can hold in your hands.",
-    "aboutText": "My work makes room for colour and experiments, alongside simple typography and clear layouts.",
-    "whatIDo": "What I work on",
-    "skillWeb": "Websites and interfaces",
-    "skillIdentity": "Logos and brand identities",
-    "skillEditorial": "Posters, packaging and layouts",
-    "toolkit": "My tools",
+    "hello": "Hello, I’m Lizaveta.",
+    "heroText": "A small collection of websites, identities and things for print.",
+    "aboutEyebrow": "02 / The designer",
+    "aboutLead": "I’m a visual designer. I work on websites and on things you can hold in your hands.",
+    "aboutText": "I like finding that one detail that gives a project its character. Sometimes it’s a colour, sometimes a letter, sometimes a very simple idea.",
     "viewCv": "My CV",
-    "contactTitle": "Drop me a line",
-    "contactText": "About a project, working together, or just to say hello.",
+    "contactTitle": "Let’s start with hello.",
+    "contactText": "Have a project in mind? Drop me a line — I’d love to hear about it.",
     "backTop": "Back to top ↑",
     "close": "Close",
     "openSite": "Open website",
@@ -89,12 +75,18 @@ const copy = {
       "presentation": "Presentations",
       "packaging": "Packaging",
       "edits": "Video"
-    }
+    },
+    "workEyebrow": "Selected work / 2026",
+    "contactEyebrow": "03 / The next page?",
+    "contents": "Table of contents",
+    "currentlyViewing": "On these pages",
+    "previous": "Previous project",
+    "footerNote": "Graphics, websites and good ideas."
   }
 };
 
 const categoryOrder = ['all', 'web', 'identity', 'editorial', 'presentation', 'packaging', 'edits'];
-const displayOrder = ['04', '06', '11', '02', '10', '07', '01', '05', '08', '12', '03', '09'];
+const displayOrder = ['06', '04', '11', '02', '10', '07', '01', '05', '08', '12', '03', '09'];
 const projects = displayOrder.map(number => projectData.find(project => project.number === number));
 const grid = document.getElementById('project-grid');
 const filters = document.getElementById('filters');
@@ -105,6 +97,7 @@ const fullImage = document.getElementById('full-image');
 let language = 'pl';
 let category = 'all';
 let selectedProject = null;
+let featuredNumber = '06';
 try { if (localStorage.getItem('portfolio-language') === 'en') language = 'en'; } catch { /* Storage may be disabled. */ }
 
 function localize(value) { return typeof value === 'string' ? value : value[language]; }
@@ -126,6 +119,8 @@ function updateLanguage() {
   document.querySelectorAll('[data-lang]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.lang === language)));
   filters.setAttribute('aria-label', copy[language].filterLabel);
   imageDialog.setAttribute('aria-label', copy[language].imagePreview);
+  document.getElementById('prev-featured').setAttribute('aria-label', copy[language].previous);
+  document.getElementById('next-featured').setAttribute('aria-label', copy[language].next);
   renderFilters();
   renderGrid();
 }
@@ -147,39 +142,63 @@ function renderFilters() {
 function renderGrid() {
   grid.replaceChildren();
   const visible = visibleProjects();
+  if (!visible.some(project => project.number === featuredNumber)) featuredNumber = visible[0].number;
   document.getElementById('project-count').textContent = `${String(visible.length).padStart(2, '0')} / 12`;
   document.getElementById('project-count').setAttribute('aria-label', `${visible.length} / 12 ${copy[language].countLabel}`);
-  visible.forEach((project, index) => {
-    const card = makeElement('article', 'project-card');
-    card.dataset.project = project.number;
-    const mounts = { '04': '#e4ebe0', '06': '#f2e6d4', '11': '#ece9e1', '02': '#e7ebee', '10': '#e9ebdc', '07': '#eee3de', '01': '#e8e2d9', '05': '#eee0dd', '08': '#e7e9df', '12': '#e4e9ee', '03': '#ede1e1' };
-    card.style.setProperty('--project-color', mounts[project.number] || '#e9e5dc');
-    const button = makeElement('button', 'project-button');
+  visible.forEach(project => {
+    const button = makeElement('button', 'index-button');
     button.type = 'button';
-    button.setAttribute('aria-label', `${localize(project.short)} — ${copy[language].openProject}`);
-    const visual = makeElement('div', 'project-visual');
-    const source = thumbnail(project);
-    if (source) {
-      const img = makeElement('img');
-      img.src = source;
-      img.alt = '';
-      img.loading = index < 2 ? 'eager' : 'lazy';
-      img.decoding = 'async';
-      visual.append(img);
-    } else {
-      const cover = makeElement('div', 'video-cover');
-      cover.append(makeElement('small', '', 'MOTION / VIDEO EDIT'), makeElement('strong', '', 'forestrock.tv'), makeElement('span', 'play-icon', '↗'));
-      visual.append(cover);
-    }
-    visual.append(makeElement('span', 'project-open', '↗'));
-    visual.setAttribute('aria-hidden', 'true');
-    const info = makeElement('div', 'project-card-info');
-    info.append(makeElement('h3', '', localize(project.short)), makeElement('p', '', localize(project.type)));
-    button.append(visual, info);
-    button.addEventListener('click', () => openProject(project.number));
-    card.append(button);
-    grid.append(card);
+    button.dataset.project = project.number;
+    button.setAttribute('aria-pressed', String(project.number === featuredNumber));
+    button.setAttribute('aria-controls', 'project-spread');
+    button.append(makeElement('span', '', project.number), document.createTextNode(localize(project.short)), makeElement('i', '', '↗'));
+    button.querySelector('i').setAttribute('aria-hidden', 'true');
+    button.addEventListener('click', () => setFeatured(project.number));
+    grid.append(button);
   });
+  setFeatured(featuredNumber);
+}
+function setFeatured(number) {
+  const visible = visibleProjects();
+  const project = visible.find(item => item.number === number);
+  if (!project) return;
+  featuredNumber = number;
+  grid.querySelectorAll('button').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.project === number)));
+  const activeIndex = grid.querySelector('[aria-pressed="true"]');
+  if (activeIndex && grid.scrollWidth > grid.clientWidth) {
+    grid.scrollLeft += activeIndex.getBoundingClientRect().left - grid.getBoundingClientRect().left - 2;
+  }
+  const button = document.getElementById('featured-project');
+  button.dataset.project = number;
+  button.setAttribute('aria-label', `${localize(project.short)} — ${copy[language].openProject}`);
+  const mounts = { '04': '#e6e9dd', '06': '#eee4d8', '11': '#ece9e1', '02': '#e6ebed', '10': '#e9ebdc', '07': '#eee3de', '01': '#e8e2d9', '05': '#eee0dd', '08': '#e7e9df', '12': '#e4e9ee', '03': '#ede1e1' };
+  button.style.setProperty('--project-color', mounts[number] || '#e9e5dc');
+  document.getElementById('featured-title').textContent = localize(project.short);
+  document.getElementById('featured-category').textContent = localize(project.type);
+  document.getElementById('featured-number').textContent = `NO. ${number}`;
+  document.getElementById('featured-position').textContent = `${String(visible.indexOf(project) + 1).padStart(2, '0')} / ${String(visible.length).padStart(2, '0')}`;
+  const media = document.getElementById('featured-media');
+  media.replaceChildren();
+  const source = thumbnail(project);
+  if (source) {
+    const image = makeElement('img');
+    image.src = source;
+    image.alt = '';
+    image.decoding = 'async';
+    media.append(image);
+  } else {
+    const cover = makeElement('span', 'video-cover');
+    cover.append(makeElement('small', '', 'MOTION / VIDEO EDIT'), makeElement('strong', '', 'forestrock.tv'), makeElement('span', 'play-icon', '▶'));
+    media.append(cover);
+  }
+  media.setAttribute('aria-hidden', 'true');
+  document.getElementById('prev-featured').disabled = visible.length < 2;
+  document.getElementById('next-featured').disabled = visible.length < 2;
+}
+function stepFeatured(direction) {
+  const visible = visibleProjects();
+  const index = visible.findIndex(project => project.number === featuredNumber);
+  setFeatured(visible[(index + direction + visible.length) % visible.length].number);
 }
 function syncScrollLock() { document.body.classList.toggle('modal-open', projectDialog.open || imageDialog.open); }
 function openProject(number) {
@@ -245,6 +264,9 @@ document.querySelectorAll('[data-lang]').forEach(button => button.addEventListen
   try { localStorage.setItem('portfolio-language', language); } catch { /* Optional preference only. */ }
   updateLanguage();
 }));
+document.getElementById('featured-project').addEventListener('click', () => openProject(featuredNumber));
+document.getElementById('prev-featured').addEventListener('click', () => stepFeatured(-1));
+document.getElementById('next-featured').addEventListener('click', () => stepFeatured(1));
 document.getElementById('close-project').addEventListener('click', () => projectDialog.close());
 document.getElementById('close-image').addEventListener('click', () => imageDialog.close());
 document.getElementById('next-project').addEventListener('click', () => {
