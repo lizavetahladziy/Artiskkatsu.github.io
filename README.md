@@ -1,17 +1,18 @@
 # Lizaveta Hladziy — portfolio
 
-A bilingual, static portfolio for GitHub Pages. No build step, package installation, external fonts or third-party JavaScript are required.
+A bilingual, static portfolio for GitHub Pages. The homepage is an interactive catalogue: a numbered index, one large project preview, category filters and previous/next controls. Full project galleries open in accessible native dialogs.
 
 ## Local preview
 
-From this directory, run `python -m http.server 8765 --bind 127.0.0.1`, then open http://localhost:8765.
+Run `python -m http.server 8765 --bind 127.0.0.1` from this directory, then open http://localhost:8765.
 
-- `index.html`: page structure, accessible project and image dialogs.
+- `index.html`: catalogue, designer information, contact details and dialogs.
 - `styles.css`: responsive layout, typography and design tokens.
-- `app.js`: PL/EN copy, category filters and gallery interactions.
-- `projects.js`: original project descriptions, media paths and gallery ordering.
-- `assets/previews/`: compressed WebP copies for the overview; project dialogs use the original files.
+- `app.js`: PL/EN copy, project selection, filters and gallery interactions.
+- `projects.js`: original project descriptions, media paths and gallery order.
+- `assets/previews/`: compressed WebP previews; full galleries retain original media.
+- `assets/fonts/`: self-hosted Instrument Serif and Manrope, with their OFL licenses.
 
-The existing `CNAME` and original image, PDF and video files are preserved. The redesign needs to be merged into the publishing branch to update the public site.
+No build, package installation, external font service or third-party JavaScript is required. The original media, `cv.pdf` and `CNAME` are preserved. The publishing branch must receive the changes before the public site updates.
 
-See [redesign verification and previews](docs/redesign/verification.md).
+See [verification and previews](docs/redesign/verification.md).

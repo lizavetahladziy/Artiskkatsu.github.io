@@ -1,43 +1,34 @@
-# Editorial portfolio redesign — verification
+# Portfolio catalogue — verification
 
-Verified locally on 2026-10-26 in the Codex Chromium browser. This is local verification, not confirmation of a public deployment.
+Verified locally on 2026-10-26.
 
-## Direction
+## Design and behaviour
 
-Warm paper, ink, violet typography, lime accents and a monogram. A collage introduces real work; an asymmetric image grid replaces the sidebar selector. All twelve projects remain accessible through category filters and native project dialogs. The about and contact sections use the same typography and spacing system.
+The homepage presents the work directly: a typographic masthead, a numbered contents list and one large selected project. Previous/next buttons browse the current category; clicking the preview opens its complete case study. On phones, the contents become a horizontally scrolling row, and the active item stays visible when using the arrows.
 
-## Content integrity
+Instrument Serif and Manrope are self-hosted under their included OFL licenses. Warm paper, blush and burgundy tie the catalogue, monogram, biography and contact sections together. The decorative signature and its caption have been removed. There are no generated illustrations in the final site.
 
-- The complete `projectData` object compares identically to the previous `index.html` after JSON serialization, including all Polish/English descriptions and image ordering.
-- All 46 referenced original media files exist. Original files, PDFs and `CNAME` are unchanged.
-- Eleven overview thumbnails total 463,292 bytes; full galleries retain original assets.
-- Chota continues to hide its external-site button; Forestrock retains its website link and video.
+The original 12 project records and their full media/gallery order remain unchanged. Existing CNAME, PDF and video are retained. Overview images are larger optimized WebPs for the large preview; all 11 files together are about 807 KB, with only the selected preview requested on load.
 
-## Verification
+## Validation
 
-- `node --check app.js`, `node --check projects.js`, `git diff --check`: passed.
-- Opened each of the twelve projects in the browser: expected gallery counts 4, 4, 6, 3, 7, 3, 1, 2, 8, 3, 4, and one video.
-- Web filter displays Purr Home, Chota and Store; Video filter displays Forestrock. Filter buttons retain focus after selection.
-- PL/EN changes page content, filters and project metadata. English preference survives reload.
-- Enlarging Missing Objects opens the correct original; Escape closes only the top image dialog and restores focus to the thumbnail. Closing a project restores focus to its card.
-- Video controls, metadata loading, website link and pause-on-close checked. No autoplay. A single-project category hides Next.
-- Polish viewport checks at 320, 390, 768, 1024 and 1440 pixels: no horizontal overflow. English checks at 320, 768 and 1440 pixels: no horizontal overflow.
-- Mobile Purr Home dialog: six images, no internal horizontal overflow.
-- No browser console errors/warnings or broken loaded overview images were reported.
-- CSS disables smooth scrolling/transitions for reduced-motion preferences. Native dialogs handle focus trapping, inert background and Escape; visible focus styles and a skip link are provided.
+- JavaScript syntax and Git whitespace checks pass.
+- PL and EN at 320, 390, 768, 1024 and 1440 pixels: no horizontal page overflow or empty translations.
+- Filters: websites 3, identity 2, graphics 4, presentations 1, packaging 1, video 1, all 12. A filter keeps keyboard focus and synchronizes the selected preview with its index. Browsing arrows disable for a single result.
+- All 12 index entries open their matching project. Image gallery counts: 4, 6, 4, 3, 7, 3, 1, 2, 8, 3 and 4, plus the existing Forestrock video.
+- Mobile Purr Home image enlargement loads the original file. Escape closes the image dialog first, returning focus to its gallery button; a second Escape closes the project, returns focus to the preview and releases scroll locking.
+- Next/previous browsing updates the title, position and active index. Mobile index scrolling keeps the selected entry visible.
+- No browser console errors or warnings during these checks.
+- Text colours meet WCAG AA normal-text contrast on the paper and pink backgrounds (muted text is at least 4.86:1; primary text on pink is 10.29:1).
 
-External email delivery, LinkedIn and end-to-end video playback were not exercised. The public site is unchanged until this branch is merged and GitHub Pages deploys it.
+These are local branch checks. Publication requires merging the PR and successful GitHub Pages deployment.
 
-## Screenshots
+## Previews
 
-Desktop, default browser viewport:
+![Desktop catalogue](desktop.png)
 
-![Desktop](desktop.png)
+![Another selected project](work.png)
 
-Work overview:
+![About and contact](contact.png)
 
-![Work](work.png)
-
-Mobile, 390 × 844:
-
-![Mobile](mobile.png)
+![Mobile catalogue](mobile.png)
