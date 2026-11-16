@@ -106,21 +106,6 @@ const projectData = [
         }
       },
       {
-        number: '05',
-        category: 'editorial',
-        short: { pl: 'Plakat', en: 'Poster' },
-        title: { pl: 'Plakat wydarzenia kulturalnego', en: 'Poster for a cultural event' },
-        type: { pl: 'Poster', en: 'Poster' },
-        label: { pl: 'Plakat typograficzny', en: 'Type poster' },
-        description: {
-          pl: 'Ćwiczenie z dużą typografią, hierarchią i napięciem między pustą przestrzenią a tekstem.',
-          en: 'An exercise in large typography, hierarchy and the tension between text and negative space.'
-        },
-        facts: { pl: ['print', 'composition', 'type'], en: ['print', 'composition', 'type'] },
-        color: '#c89472',
-        gallery: ['graphicsposter.jpg', 'graphics.jpg']
-      },
-      {
         number: '06',
         category: 'packaging',
         short: { pl: 'Kawa', en: 'Coffee' },
