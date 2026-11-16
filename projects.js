@@ -216,23 +216,26 @@ const projectData = [
         color: '#dedbd3',
         caseStudy: true,
         gallery: [
-          'missing-objects-cover.jpg',
-          'missing-objects-brand-system-detail.jpg',
-          'missing-objects-archive-kit.jpg',
-          'missing-objects-poster-digital-archive.jpg'
+          'missing-objects-cover-2026.jpg',
+          'missing-objects-brand-system-2026.jpg',
+          'missing-objects-archive-kit-2026.jpg',
+          'missing-objects-poster-campaign.jpg',
+          'missing-objects-digital-archive.jpg'
         ],
         galleryAlt: {
           pl: [
             'Missing Objects — główna prezentacja identyfikacji i pakiet archiwizacyjny.',
             'Missing Objects — szczegóły systemu identyfikacji wizualnej.',
             'Missing Objects — karty, koperty, fotografie i etykiety zestawu archiwizacyjnego.',
-            'Missing Objects — kampania plakatowa.'
+            'Missing Objects — kampania plakatowa.',
+            'Missing Objects — cyfrowe archiwum pamięci.'
           ],
           en: [
             'Missing Objects — identity overview and archive package.',
             'Missing Objects — visual identity system details.',
             'Missing Objects — archive kit with cards, envelopes, photographs and labels.',
-            'Missing Objects — poster campaign.'
+            'Missing Objects — poster campaign.',
+            'Missing Objects — digital memory archive.'
           ]
         }
       },
