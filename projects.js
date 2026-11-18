@@ -80,20 +80,26 @@ const projectData = [
         color: '#aeb39f',
         caseStudy: true,
         gallery: [
-          'chota-hero.jpg',
-          'chota-demo.jpg',
-          'chota-how-it-works.jpg'
+          { src: 'assets/updated-projects/chota-hero.jpg', width: 1280, height: 726 },
+          { src: 'assets/updated-projects/chota-knowledge-base.jpg', width: 1023, height: 321 },
+          { src: 'assets/updated-projects/chota-demo.jpg', width: 1280, height: 341 },
+          { src: 'assets/updated-projects/chota-document-visual.jpg', width: 1280, height: 726 },
+          { src: 'assets/updated-projects/chota-sign-in.jpg', width: 1280, height: 888 }
         ],
         galleryAlt: {
           pl: [
-            'Chota — strona główna z logo, nawigacją i prezentacją platformy AI.',
-            'Chota — sekcja demonstracyjna z pytaniem, odpowiedzią i bazą wiedzy.',
-            'Chota — sekcja opisująca ładowanie dokumentów, indeksowanie i dostęp.'
+            'Logo Chota z ilustracjami dokumentów.',
+            'Sekcja o bazie wiedzy Chota.',
+            'Demonstracja odpowiedzi z odnośnikami do źródeł.',
+            'Ilustracja plików obsługiwanych przez Chota.',
+            'Ekran logowania Chota.'
           ],
           en: [
-            'Chota — homepage with the logo, navigation and AI platform overview.',
-            'Chota — demo section with a question, answer and knowledge base.',
-            'Chota — section explaining document uploads, indexing and access.'
+            'Chota logo with illustrations of documents.',
+            'Chota knowledge base section.',
+            'Demo answer with references to sources.',
+            'Illustration of document types supported by Chota.',
+            'Chota sign-in screen.'
           ]
         },
         hideOpenSite: true,
@@ -129,29 +135,35 @@ const projectData = [
         color: '#6d9b86',
         caseStudy: true,
         gallery: [
-          'purr-home-hero.png',
-          'purr-home-how-it-works.jpg',
-          'purr-home-menu.jpg',
-          'purr-home-rules.jpg',
-          'purr-home-mission.jpg',
-          'purr-home-cats.jpg'
+          { src: 'assets/updated-projects/purr-home-hero.jpg', width: 1280, height: 702 },
+          { src: 'assets/updated-projects/purr-home-how-it-works.jpg', width: 1280, height: 617 },
+          { src: 'assets/updated-projects/purr-home-cats.jpg', width: 1280, height: 869 },
+          { src: 'assets/updated-projects/purr-home-adoption-stories.jpg', width: 1280, height: 713 },
+          { src: 'assets/updated-projects/purr-home-menu.jpg', width: 1280, height: 810 },
+          { src: 'assets/updated-projects/purr-home-rules.jpg', width: 1280, height: 776 },
+          { src: 'assets/updated-projects/purr-home-mission.jpg', width: 1280, height: 657 },
+          { src: 'assets/updated-projects/purr-home-booking.jpg', width: 1280, height: 759 }
         ],
         galleryAlt: {
           pl: [
-            'Purr Home — strona główna schroniska dla kotów.',
-            'Purr Home — sekcja Jak to działa.',
-            'Purr Home — menu kawiarni.',
-            'Purr Home — sześć prostych zasad przed spotkaniem z kotem.',
-            'Purr Home — misja i partnerzy schroniska.',
-            'Purr Home — profile kotów i karta Ryzhik.'
+            'Strona główna Purr Home z czarno-białym kotem.',
+            'Cztery etapy wizyty i adopcji w Purr Home.',
+            'Profile kotów i karta Ryzhik.',
+            'Historie kotów, które znalazły dom.',
+            'Menu kawiarni Purr Home.',
+            'Sześć zasad przed spotkaniem z kotem.',
+            'Misja i partnerzy schroniska Purr Home.',
+            'Formularz rezerwacji wizyty i informacje o dojeździe.'
           ],
           en: [
-            'Purr Home — cat shelter homepage.',
-            'Purr Home — How it works section.',
-            'Purr Home — cafe menu.',
-            'Purr Home — six simple rules before meeting a cat.',
-            'Purr Home — shelter mission and partners.',
-            'Purr Home — cat profiles and the Ryzhik card.'
+            'Purr Home homepage with a black-and-white cat.',
+            'Four steps for a visit and adoption at Purr Home.',
+            'Cat profiles and the Ryzhik card.',
+            'Stories of cats who found a home.',
+            'Purr Home cafe menu.',
+            'Six rules before meeting a cat.',
+            'Purr Home shelter mission and partners.',
+            'Visit booking form and directions.'
           ]
         }
       },
@@ -266,23 +278,26 @@ const projectData = [
         color: '#dedbd3',
         caseStudy: true,
         gallery: [
-          'missing-objects-cover.jpg',
-          'missing-objects-brand-system-detail.jpg',
-          'missing-objects-archive-kit.jpg',
-          'missing-objects-poster-digital-archive.jpg'
+          { src: 'assets/updated-projects/missing-objects-cover.jpg', width: 1280, height: 567 },
+          { src: 'assets/updated-projects/missing-objects-brand-system.jpg', width: 1280, height: 542 },
+          { src: 'assets/updated-projects/missing-objects-archive-kit.jpg', width: 1280, height: 652 },
+          { src: 'assets/updated-projects/missing-objects-poster-campaign.jpg', width: 1280, height: 880 },
+          { src: 'assets/updated-projects/missing-objects-digital-archive.jpg', width: 1280, height: 218 }
         ],
         galleryAlt: {
           pl: [
-            'Missing Objects — główna prezentacja identyfikacji i pakiet archiwizacyjny.',
-            'Missing Objects — szczegóły systemu identyfikacji wizualnej.',
-            'Missing Objects — karty, koperty, fotografie i etykiety zestawu archiwizacyjnego.',
-            'Missing Objects — kampania plakatowa.'
+            'Główna prezentacja identyfikacji Missing Objects.',
+            'Logo, typografia i paleta kolorów Missing Objects.',
+            'Karty, koperty i fotografie zestawu archiwizacyjnego.',
+            'Trzy plakaty z kampanii Missing Objects.',
+            'Widok cyfrowego archiwum Missing Objects.'
           ],
           en: [
-            'Missing Objects — identity overview and archive package.',
-            'Missing Objects — visual identity system details.',
-            'Missing Objects — archive kit with cards, envelopes, photographs and labels.',
-            'Missing Objects — poster campaign.'
+            'Missing Objects identity cover.',
+            'Missing Objects logo, typography and color palette.',
+            'Archive kit showing cards, envelopes and photographs.',
+            'Three Missing Objects campaign posters.',
+            'Missing Objects digital archive screen.'
           ]
         }
       },
