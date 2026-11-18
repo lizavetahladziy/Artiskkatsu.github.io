@@ -2,19 +2,19 @@
 
 const copy = {
   pl: {
-    skip: 'Przejdź do projektów', navWork: 'Projekty', navAbout: 'O mnie', navContact: 'Porozmawiajmy',
+    skip: 'Przejdź do projektów', navWork: 'Projekty', navAbout: 'O mnie', navContact: 'Kontakt', navLabel: 'Menu główne',
     heroLineOne: 'Dobry design.', heroLineTwo: 'Własny charakter.',
     heroText: 'Łączę wyrazisty obraz z przemyślaną strukturą. Projektuję strony, identyfikacje i rzeczy, którym warto przyjrzeć się bliżej.',
     viewWork: 'Zobacz moje prace', heroCaption: 'Mały wgląd w mój świat.', heroFooter: 'Pomysł. Forma. Charakter.',
-    workEyebrow: '01 / Portfolio', workTitle: 'Wybrane', workTitleItalic: 'prace.',
+    workEyebrow: 'Portfolio', workTitle: 'Wybrane', workTitleItalic: 'prace.',
     workIntro: 'Różne media. Ten sam głód dobrych pomysłów. Koncepcje, eksperymenty i projekty wizualne.',
     archiveEnd: 'Zawsze jest miejsce na kolejny dobry pomysł.', startProject: 'Może Twój? ↗',
-    aboutEyebrow: '02 / Kilka słów o mnie', aboutTitle: 'Estetyka z', aboutItalic: 'intencją.',
+    aboutEyebrow: 'Kilka słów o mnie', aboutTitle: 'Estetyka z', aboutItalic: 'intencją.',
     aboutLead: 'Lubię, kiedy rzeczy dobrze wyglądają. Jeszcze bardziej — kiedy mają sens.',
     aboutText: 'Pracuję nad projektami wizualnymi, które łączą estetykę z porządkiem. Interesuje mnie design, który nie potrzebuje nadmiaru efektów, żeby wyglądać pewnie.',
     skillWeb: 'Strony, interfejsy, systemy komponentów', skillIdentity: 'Znaki, kolory, typografia, branding',
     skillEditorial: 'Layouty, plakaty, opakowania, social media', toolkit: 'Mój warsztat', viewCv: 'Zajrzyj do mojego CV',
-    contactEyebrow: '03 / Kontakt', contactTitle: 'Zróbmy coś', contactItalic: 'dobrego.',
+    contactEyebrow: 'Kontakt', contactTitle: 'Zróbmy coś', contactItalic: 'dobrego.',
     contactText: 'Masz pomysł, pytanie albo po prostu chcesz się przywitać? Napisz do mnie.',
     backTop: 'Do góry ↑', footerNote: 'Z pomysłem. I charakterem.', close: 'Zamknij', openSite: 'Otwórz stronę',
     moreWork: 'Jeszcze trochę inspiracji?', next: 'Następny projekt', zoom: 'Powiększ obraz', openProject: 'Otwórz projekt',
@@ -23,19 +23,19 @@ const copy = {
     categories: { all: 'Wszystko', web: 'Web design', identity: 'Identyfikacje', editorial: 'Editorial', presentation: 'Prezentacje', packaging: 'Opakowania', edits: 'Wideo' }
   },
   en: {
-    skip: 'Skip to projects', navWork: 'Work', navAbout: 'About', navContact: 'Let’s talk',
+    skip: 'Skip to projects', navWork: 'Work', navAbout: 'About', navContact: 'Contact', navLabel: 'Main navigation',
     heroLineOne: 'Good design.', heroLineTwo: 'A little character.',
     heroText: 'I bring bold visuals and thoughtful structure together. Designing websites, identities and things worth a closer look.',
     viewWork: 'Explore my work', heroCaption: 'A little glimpse into my world.', heroFooter: 'Idea. Form. Character.',
-    workEyebrow: '01 / Portfolio', workTitle: 'Selected', workTitleItalic: 'work.',
+    workEyebrow: 'Portfolio', workTitle: 'Selected', workTitleItalic: 'work.',
     workIntro: 'Different media. The same appetite for good ideas. Concepts, experiments and visual projects.',
     archiveEnd: 'There’s always room for another good idea.', startProject: 'Maybe yours? ↗',
-    aboutEyebrow: '02 / A little about me', aboutTitle: 'Aesthetics with', aboutItalic: 'intention.',
+    aboutEyebrow: 'A little about me', aboutTitle: 'Aesthetics with', aboutItalic: 'intention.',
     aboutLead: 'I like things that look good. Even more so when they make sense.',
     aboutText: 'I work on visual projects that combine aesthetics with order. I am interested in design that does not need excessive effects to feel confident.',
     skillWeb: 'Websites, interfaces, component systems', skillIdentity: 'Marks, colour, typography, branding',
     skillEditorial: 'Layouts, posters, packaging, social media', toolkit: 'My toolkit', viewCv: 'Take a look at my CV',
-    contactEyebrow: '03 / Get in touch', contactTitle: 'Let’s make', contactItalic: 'something good.',
+    contactEyebrow: 'Get in touch', contactTitle: 'Let’s make', contactItalic: 'something good.',
     contactText: 'Have an idea, a question, or just want to say hello? I’d love to hear from you.',
     backTop: 'Back to top ↑', footerNote: 'Made with thought. And character.', close: 'Close', openSite: 'Open website',
     moreWork: 'A little more inspiration?', next: 'Next project', zoom: 'Enlarge image', openProject: 'Open project',
@@ -80,6 +80,7 @@ function updateLanguage() {
     const project = projects.find(item => item.number === button.dataset.project);
     button.setAttribute('aria-label', `${localize(project.short)} — ${copy[language].openProject}`);
   });
+  document.querySelector('.navigation').setAttribute('aria-label', copy[language].navLabel);
   filters.setAttribute('aria-label', copy[language].filterLabel);
   imageDialog.setAttribute('aria-label', copy[language].imagePreview);
   renderFilters();
