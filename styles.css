@@ -694,65 +694,344 @@ h1 em {
 }
 
 .computer-screen {
-  --screen-height:clamp(166px,16vw,218px);
-  --screen-bezel:clamp(4px,.75vw,9px);
-  --portrait-left:#907c83;
-  --portrait-right:#958187;
+  --screen-color:#e1d8ef;
+  --cat-outline:#463549;
+  --cat-fur:#4b4155;
+  --cat-chest:#fff2dd;
+  --cat-paw-color:#fff2dd;
+  --cat-eye-color:#f5ca84;
+  --cat-face:radial-gradient(ellipse at 50% 76%,var(--cat-chest) 0 34%,transparent 35%),var(--cat-fur);
   position:relative;
   isolation:isolate;
   overflow:hidden;
   display:grid;
   place-items:center;
-  height:var(--screen-height);
-  border:var(--screen-bezel) solid #37303e;
+  height:clamp(176px,17vw,220px);
+  border:clamp(4px,.75vw,9px) solid #37303e;
   border-radius:clamp(12px,2vw,22px);
-  background:linear-gradient(90deg,var(--portrait-left),var(--portrait-right));
-  box-shadow:0 0 0 1px #62566d
+  background:radial-gradient(circle,#42315424 .8px,transparent 1.3px) 0 0/11px 11px,
+    radial-gradient(ellipse at 50% 38%,#fff7,transparent 74%),var(--screen-color);
+  box-shadow:0 0 0 1px #62566d,inset 0 0 22px #241a2d29;
+  transition:background-color .2s
 }
 
 .computer-screen::after {
   position:absolute;
-  inset:0;
+  inset:7px;
+  border:1px solid #45394b34;
   border-radius:inherit;
-  box-shadow:inset 0 0 15px #241a2d42;
   pointer-events:none;
   content:''
 }
 
-.cat-portrait {
+.cat-scene {
   position:relative;
-  overflow:hidden;
-  width:min(100%,calc((var(--screen-height) - 2 * var(--screen-bezel)) * 4 / 3));
-  aspect-ratio:4/3;
-  mask-image:linear-gradient(to right,transparent,#000 10% 90%,transparent)
+  width:9.45em;
+  height:6.48em;
+  font-size:clamp(var(--type-base),2vw,26px)
 }
 
-.cat-portrait img {
+.cat-character,.cat-shadow,.cat-tail,.cat-body,.cat-head,.cat-ear,.cat-face,.cat-eye,.cat-muzzle,
+.cat-paws,.cat-wave,.cat-toy,.cat-spark {
+  position:absolute
+}
+
+.cat-character {
+  inset:0
+}
+
+.cat-shadow {
+  bottom:.2em;
+  left:1.22em;
+  width:7.05em;
+  height:.64em;
+  border-radius:50%;
+  background:#56415d2b
+}
+
+.cat-tail {
+  right:1.21em;
+  bottom:.73em;
+  width:2.67em;
+  height:2.72em;
+  border:.45em solid var(--cat-fur);
+  border-top-color:transparent;
+  border-left-color:transparent;
+  border-radius:65% 49% 56% 42%;
+  filter:drop-shadow(.045em .07em var(--cat-outline));
+  transform:rotate(-33deg);
+  transform-origin:25% 81%
+}
+
+.cat-body {
+  left:2.46em;
+  bottom:.51em;
+  width:4.08em;
+  height:2.82em;
+  border:.08em solid var(--cat-outline);
+  border-radius:52% 48% 37% 41%;
+  background:radial-gradient(ellipse at 48% 90%,var(--cat-chest) 0 47%,transparent 48%),var(--cat-fur)
+}
+
+.cat-head {
+  top:1.58em;
+  left:2.16em;
+  width:4.67em;
+  height:3.36em
+}
+
+.cat-ear {
+  top:-.87em;
+  left:.23em;
+  width:1.55em;
+  height:1.74em;
+  border:.08em solid var(--cat-outline);
+  border-radius:16% 78% 40% 24%;
+  background:var(--cat-fur);
+  transform:rotate(-16deg)
+}
+
+.cat-ear + .cat-ear {
+  right:.23em;
+  left:auto;
+  transform:scaleX(-1) rotate(-16deg)
+}
+
+.cat-ear::after {
   position:absolute;
-  inset:0 auto auto 0;
-  width:200%;
-  height:200%;
-  max-width:none;
-  transform:translate(var(--portrait-x,0%),var(--portrait-y,0%))
+  inset:.35em .28em .16em;
+  border-radius:18% 79% 50% 28%;
+  background:#db9c9d;
+  content:''
+}
+
+.cat-face {
+  inset:0;
+  overflow:hidden;
+  border:.08em solid var(--cat-outline);
+  border-radius:47% 47% 45% 45%;
+  background:var(--cat-face);
+  box-shadow:0 .1em #3a263830
+}
+
+.cat-eye {
+  top:42%;
+  left:21%;
+  width:.4em;
+  height:.49em;
+  border-radius:50%;
+  background:radial-gradient(circle at 65% 24%,#fffaf2 0 14%,transparent 18%),
+    radial-gradient(ellipse at 52% 54%,#312431 0 36%,var(--cat-eye-color) 41%)
+}
+
+.cat-eye + .cat-eye {
+  right:21%;
+  left:auto
+}
+
+.cat-muzzle {
+  top:58%;
+  left:46%;
+  width:8%;
+  height:.19em;
+  border-radius:65% 65% 95% 95%;
+  background:#a76173
+}
+
+.cat-muzzle::after {
+  position:absolute;
+  top:96%;
+  left:-24%;
+  width:148%;
+  height:.20em;
+  border:solid var(--cat-outline);
+  border-width:0 .07em .07em;
+  border-radius:0 0 100% 100%;
+  content:''
+}
+
+.cat-face::before,.cat-face::after {
+  position:absolute;
+  top:65%;
+  left:2%;
+  width:.79em;
+  height:.16em;
+  border-block:1px solid #8c778d;
+  transform:rotate(11deg);
+  content:''
+}
+
+.cat-face::after {
+  right:2%;
+  left:auto;
+  transform:rotate(-11deg)
+}
+
+.cat-paws,.cat-wave {
+  width:1.01em;
+  height:.62em;
+  border:.075em solid var(--cat-outline);
+  border-radius:65% 65% 47% 47%;
+  background:var(--cat-paw-color)
+}
+
+.cat-paws {
+  left:4.46em;
+  bottom:.44em;
+  box-shadow:-1.16em 0 0 -.07em var(--cat-paw-color),-1.16em 0 var(--cat-outline)
+}
+
+.cat-wave {
+  bottom:1.45em;
+  left:2.33em;
+  opacity:0;
+  transform:translate(-.54em,-1em) rotate(-31deg);
+  background:radial-gradient(circle at 32% 32%,#b77d86 0 7%,transparent 8%),
+    radial-gradient(circle at 63% 31%,#b77d86 0 7%,transparent 8%),
+    radial-gradient(ellipse at 47% 64%,#c58b94 0 17%,transparent 18%),var(--cat-paw-color)
+}
+
+.cat-toy,.cat-spark {
+  opacity:0
+}
+
+.cat-toy {
+  right:.55em;
+  bottom:1.48em;
+  width:.37em;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:#ae4266;
+  box-shadow:0 0 .43em #e5638933
+}
+
+.cat-spark {
+  top:.68em;
+  right:1.17em;
+  width:.47em;
+  aspect-ratio:1;
+  background:#a35e72;
+  clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)
 }
 
 .computer-screen[data-cat=ginger] {
-  --portrait-left:#a88270;
-  --portrait-right:#b7917e;
-  --portrait-x:-50%
+  --screen-color:#f5d4b2;
+  --cat-fur:#d59461;
+  --cat-outline:#744954;
+  --cat-chest:#ffe3bf;
+  --cat-paw-color:#ffe3bf;
+  --cat-eye-color:#f2d67a;
+  --cat-face:radial-gradient(ellipse at 38% 5%,#a8614c 0 6%,transparent 7%),
+    radial-gradient(ellipse at 50% 6%,#a8614c 0 8%,transparent 9%),
+    radial-gradient(ellipse at 62% 5%,#a8614c 0 6%,transparent 7%),
+    radial-gradient(ellipse at 50% 76%,var(--cat-chest) 0 34%,transparent 35%),var(--cat-fur)
 }
 
 .computer-screen[data-cat=calico] {
-  --portrait-left:#77796d;
-  --portrait-right:#88887b;
-  --portrait-y:-50%
+  --screen-color:#dce4b5;
+  --cat-fur:#f8eedc;
+  --cat-outline:#58465e;
+  --cat-chest:#fff9e9;
+  --cat-paw-color:#fff9e9;
+  --cat-eye-color:#a7b96e;
+  --cat-face:radial-gradient(ellipse at 9% 14%,#ce8c63 0 29%,transparent 30%),
+    radial-gradient(ellipse at 96% 11%,#75617a 0 26%,transparent 27%),var(--cat-fur)
+}
+
+.computer-screen[data-cat=calico] .cat-ear:first-child {
+  background:#ce8c63
+}
+
+.computer-screen[data-cat=calico] .cat-ear + .cat-ear,.computer-screen[data-cat=calico] .cat-tail {
+  --cat-fur:#75617a
 }
 
 .computer-screen[data-cat=sleepy] {
-  --portrait-left:#927974;
-  --portrait-right:#9b817c;
-  --portrait-x:-50%;
-  --portrait-y:-50%
+  --screen-color:#efd4de;
+  --cat-fur:#9185a6;
+  --cat-outline:#554565;
+  --cat-chest:#e8daed;
+  --cat-paw-color:#e8daed;
+  --cat-eye-color:#a6ba8b
+}
+
+.computer-screen[data-cat=sleepy] .cat-body {
+  height:2.17em
+}
+
+.computer-screen[data-cat=sleepy] .cat-head {
+  transform:translate(-.2em,.53em) rotate(-7deg)
+}
+
+.computer-screen[data-cat=sleepy]:not([data-reacting]) .cat-eye {
+  height:.31em;
+  background:none;
+  border-bottom:.08em solid var(--cat-outline);
+  border-radius:0 0 70% 70%
+}
+
+.computer-screen[data-cat=tuxedo][data-reacting] .cat-wave {
+  opacity:1;
+  animation:cat-wave .9s ease-in-out
+}
+
+.computer-screen[data-cat=ginger][data-reacting] .cat-tail {
+  transform:rotate(-61deg);
+  animation:cat-tail-swish .9s ease-in-out
+}
+
+.computer-screen[data-cat=calico][data-reacting] .cat-character {
+  transform:translateX(.44em);
+  animation:cat-pounce .85s ease-in-out
+}
+
+.computer-screen[data-cat=calico][data-reacting] .cat-toy {
+  opacity:1;
+  animation:cat-toy .85s ease-in-out
+}
+
+.computer-screen[data-cat=sleepy][data-reacting] .cat-head {
+  transform:translate(-.13em,.14em) rotate(5deg);
+  animation:cat-wake .5s ease-out
+}
+
+.computer-screen[data-cat=sleepy][data-reacting] .cat-spark {
+  opacity:1;
+  animation:cat-spark .55s ease-out
+}
+
+@keyframes cat-wave {
+  0% { transform:translate(0,0) rotate(0) }
+  28%,68% { transform:translate(-.65em,-1.15em) rotate(-58deg) }
+  46%,86% { transform:translate(-.52em,-1.05em) rotate(-20deg) }
+}
+
+@keyframes cat-tail-swish {
+  0% { transform:rotate(-33deg) }
+  25%,70% { transform:rotate(-70deg) }
+  48%,90% { transform:rotate(-22deg) }
+}
+
+@keyframes cat-pounce {
+  0% { transform:translateX(0) }
+  30% { transform:translate(-.3em,.1em) scale(.98) }
+  66% { transform:translate(.59em,-.32em) scale(1.02) }
+}
+
+@keyframes cat-toy {
+  0% { opacity:0; transform:translate(-.32em,.1em) }
+  45% { opacity:1; transform:translate(-.1em,.28em) }
+  70% { transform:translate(.27em,-.2em) }
+}
+
+@keyframes cat-wake {
+  0% { transform:translate(-.2em,.53em) rotate(-7deg) }
+  65% { transform:translate(-.14em,0) rotate(7deg) }
+}
+
+@keyframes cat-spark {
+  0% { opacity:0; transform:scale(.3) }
+  68% { opacity:1; transform:scale(1.23) }
 }
 
 .computer-controls {

@@ -275,11 +275,11 @@ const projectData = [
         color: '#dedbd3',
         caseStudy: true,
         gallery: [
-          { src: 'assets/updated-projects/missing-objects-cover.jpg', width: 1280, height: 567 },
-          { src: 'assets/updated-projects/missing-objects-brand-system.jpg', width: 1280, height: 542 },
-          { src: 'assets/updated-projects/missing-objects-archive-kit.jpg', width: 1280, height: 652 },
-          { src: 'assets/updated-projects/missing-objects-poster-campaign.jpg', width: 1280, height: 880 },
-          { src: 'assets/updated-projects/missing-objects-digital-archive.jpg', width: 1280, height: 218 }
+          { src: 'assets/missing-objects/cover.webp', preview: 'assets/missing-objects/cover-preview.webp', width: 5760, height: 2476 },
+          { src: 'assets/missing-objects/brand-system.webp', preview: 'assets/missing-objects/brand-system-preview.webp', width: 5760, height: 2316 },
+          { src: 'assets/missing-objects/archive-kit.webp', preview: 'assets/missing-objects/archive-kit-preview.webp', width: 5760, height: 2804 },
+          { src: 'assets/missing-objects/poster-campaign.webp', preview: 'assets/missing-objects/poster-campaign-preview.webp', width: 5760, height: 3664 },
+          { src: 'assets/missing-objects/digital-archive.webp', preview: 'assets/missing-objects/digital-archive-preview.webp', width: 5760, height: 1264 }
         ],
         galleryAlt: {
           pl: [

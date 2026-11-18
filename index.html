@@ -7,9 +7,9 @@
   <meta name="description" content="Lizaveta Hladziy — portfolio projektantki wizualnej. Web design, identyfikacja wizualna, editorial i opakowania.">
   <title>Lizaveta Hladziy — Visual designer</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=cat-portraits">
-  <script src="projects.js?v=design-lab" defer></script>
-  <script src="app.js?v=cat-gallery" defer></script>
+  <link rel="stylesheet" href="styles.css?v=playful-cats">
+  <script src="projects.js?v=missing-objects-frames" defer></script>
+  <script src="app.js?v=playful-cats" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#work" data-i18n="skip">Przejdź do projektów</a>
@@ -27,14 +27,14 @@
       <div class="hero-topline"><span><span class="status-dot" aria-hidden="true"></span>INDEPENDENT VISUAL DESIGNER</span><span>PORTFOLIO — 2024/26</span></div>
       <div class="hero-main">
         <div class="hero-copy"><h1 id="hero-title"><span data-i18n="heroLineOne">Dobry design.</span><br><em data-i18n="heroLineTwo">Własny charakter.</em><span class="heading-dot" aria-hidden="true">*</span></h1><p class="hero-description" data-i18n="heroText">Łączę wyrazisty obraz z przemyślaną strukturą. Projektuję strony, identyfikacje i rzeczy, którym warto przyjrzeć się bliżej.</p><a class="text-link hero-cta" href="#work"><span data-i18n="viewWork">Zobacz moje prace</span><span class="circle-arrow" aria-hidden="true">↓</span></a></div>
-        <div class="hero-art" aria-label="Selected work / Wybrane prace"><span class="art-orbit" aria-hidden="true"></span><button class="art-piece art-piece-back" data-project="04" type="button" aria-label="Purr Home — otwórz projekt"><img src="assets/updated-projects/purr-home-hero.jpg" width="1280" height="702" alt="Purr Home — web design" fetchpriority="high"><span>PURR HOME</span></button><button class="art-piece art-piece-front" data-project="11" type="button" aria-label="Missing Objects — otwórz projekt"><img src="assets/updated-projects/missing-objects-cover.jpg" width="1280" height="567" alt="Missing Objects — visual identity" fetchpriority="high"><span>MISSING OBJECTS <span aria-hidden="true">↗</span></span></button><span class="design-sticker" aria-hidden="true">a little<br><em>different.</em><span>✳</span></span></div>
+        <div class="hero-art" aria-label="Selected work / Wybrane prace"><span class="art-orbit" aria-hidden="true"></span><button class="art-piece art-piece-back" data-project="04" type="button" aria-label="Purr Home — otwórz projekt"><img src="assets/updated-projects/purr-home-hero.jpg" width="1280" height="702" alt="Purr Home — web design" fetchpriority="high"><span>PURR HOME</span></button><button class="art-piece art-piece-front" data-project="11" type="button" aria-label="Missing Objects — otwórz projekt"><img src="assets/missing-objects/cover-preview.webp" width="1600" height="688" alt="Missing Objects — visual identity" fetchpriority="high"><span>MISSING OBJECTS <span aria-hidden="true">↗</span></span></button><span class="design-sticker" aria-hidden="true">a little<br><em>different.</em><span>✳</span></span></div>
       </div>
       <div class="hero-bottom"><span data-i18n="heroFooter">Pomysł. Forma. Charakter.</span><span>WEB / IDENTITY / EDITORIAL</span></div>
     </section>
     <section class="work-section wrap" id="work" aria-labelledby="work-title">
       <div class="section-heading"><div><span class="eyebrow" data-i18n="workEyebrow">Portfolio</span><h2 id="work-title"><span data-i18n="workTitle">Wybrane</span> <em data-i18n="workTitleItalic">prace.</em></h2></div><p data-i18n="workIntro">Różne media. Ten sam głód dobrych pomysłów. Koncepcje, eksperymenty i projekty wizualne.</p></div>
       <div class="work-toolbar"><div class="filters" id="filters" role="group" aria-label="Kategorie projektów"></div><span class="project-count" id="project-count" aria-live="polite"></span></div><div class="project-grid" id="project-grid"></div>
-      <noscript><p>Włącz JavaScript, aby przeglądać wszystkie projekty. / Enable JavaScript to explore all projects.</p><p><a href="assets/updated-projects/missing-objects-cover.jpg">Missing Objects</a> · <a href="assets/updated-projects/purr-home-hero.jpg">Purr Home</a> · <a href="cv.pdf?v=2f1adcb2">CV</a></p></noscript>
+      <noscript><p>Włącz JavaScript, aby przeglądać wszystkie projekty. / Enable JavaScript to explore all projects.</p><p><a href="assets/missing-objects/cover.webp">Missing Objects</a> · <a href="assets/updated-projects/purr-home-hero.jpg">Purr Home</a> · <a href="cv.pdf?v=2f1adcb2">CV</a></p></noscript>
       <div class="archive-end"><span aria-hidden="true">✳</span><p data-i18n="archiveEnd">Zawsze jest miejsce na kolejny dobry pomysł.</p><a href="#contact" data-i18n="startProject">Może Twój? ↗</a></div>
     </section>
     <section class="about-section" id="about" aria-labelledby="about-title"><div class="wrap about-inner">
@@ -45,15 +45,28 @@
           <button class="cat-computer" id="cat-computer" type="button" aria-label="Pokaż następnego kota" disabled>
             <span class="computer-cabinet" aria-hidden="true">
               <span class="computer-screen" id="computer-screen" data-cat="tuxedo">
-                <span class="cat-portrait">
-                  <img src="assets/cat-portraits.webp" width="1448" height="1086" alt="" loading="lazy" decoding="async">
+                <span class="cat-scene">
+                  <span class="cat-shadow"></span>
+                  <span class="cat-character">
+                    <span class="cat-tail"></span>
+                    <span class="cat-body"></span>
+                    <span class="cat-head">
+                      <span class="cat-ear"></span><span class="cat-ear"></span>
+                      <span class="cat-face">
+                        <span class="cat-eye"></span><span class="cat-eye"></span>
+                        <span class="cat-muzzle"></span>
+                      </span>
+                    </span>
+                    <span class="cat-paws"></span><span class="cat-wave"></span>
+                  </span>
+                  <span class="cat-toy"></span><span class="cat-spark"></span>
                 </span>
               </span>
               <span class="computer-controls"><span class="computer-power"></span><span class="computer-vents"></span></span>
             </span>
             <span class="computer-stand" aria-hidden="true"></span>
           </button>
-          <p class="cat-hint" id="cat-hint" hidden><span aria-hidden="true">↳</span> <span data-i18n="catHint">Stuknij w komputer, aby zobaczyć kolejnego kota.</span></p>
+          <p class="cat-hint" id="cat-hint" hidden><span aria-hidden="true">↳</span> <span id="cat-hint-copy">Kliknij lub stuknij po kolejnego kota.</span></p>
           <p class="cat-announcement" id="cat-announcement" role="status"></p>
         </div>
       </div>

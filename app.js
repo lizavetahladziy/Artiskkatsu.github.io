@@ -10,7 +10,8 @@ const copy = {
     workIntro: 'Różne media. Ten sam głód dobrych pomysłów. Koncepcje, eksperymenty i projekty wizualne.',
     archiveEnd: 'Zawsze jest miejsce na kolejny dobry pomysł.', startProject: 'Może Twój? ↗',
     aboutEyebrow: 'Kilka słów o mnie', aboutTitle: 'Estetyka z', aboutItalic: 'intencją.',
-    catHint: 'Stuknij w komputer, aby zobaczyć kolejnego kota.',
+    catHint: 'Kliknij lub stuknij po kolejnego kota.',
+    catHoverHint: 'Najedź, żeby się pobawić. Kliknij po kolejnego kota.',
     nextCat: 'Pokaż następnego kota',
     cats: { tuxedo: 'Czarno-biały kot.', ginger: 'Rudy kot w paski.', calico: 'Trójkolorowy kot.', sleepy: 'Śpiący szary kot.' },
     aboutLead: 'Lubię, kiedy rzeczy dobrze wyglądają. Jeszcze bardziej — kiedy mają sens.',
@@ -39,7 +40,8 @@ const copy = {
     workIntro: 'Different media. The same appetite for good ideas. Concepts, experiments and visual projects.',
     archiveEnd: 'There’s always room for another good idea.', startProject: 'Maybe yours? ↗',
     aboutEyebrow: 'A little about me', aboutTitle: 'Aesthetics with', aboutItalic: 'intention.',
-    catHint: 'Tap the computer to see another cat.',
+    catHint: 'Tap to meet the next cat.',
+    catHoverHint: 'Hover to play. Click for the next cat.',
     nextCat: 'Show the next cat',
     cats: { tuxedo: 'Black-and-white cat.', ginger: 'Orange tabby cat.', calico: 'Calico cat.', sleepy: 'Sleepy gray cat.' },
     aboutLead: 'I like things that look good. Even more so when they make sense.',
@@ -72,7 +74,9 @@ const gallery = document.getElementById('project-gallery');
 const fullImage = document.getElementById('full-image');
 const catComputer = document.getElementById('cat-computer');
 const computerScreen = document.getElementById('computer-screen');
+const catHintCopy = document.getElementById('cat-hint-copy');
 const catAnnouncement = document.getElementById('cat-announcement');
+const canHover = window.matchMedia('(hover: hover)');
 const screenCats = ['tuxedo', 'ginger', 'calico', 'sleepy'];
 let catIndex = 0;
 let language = 'pl';
@@ -94,6 +98,10 @@ function thumbnail(project) {
   if (source && typeof source !== 'string') return source.preview || source.src;
   return source ? `assets/previews/${source.replace(/\.[^.]+$/, '')}.webp` : null;
 }
+function updateCatHint() {
+  catHintCopy.textContent = canHover.matches ? copy[language].catHoverHint : copy[language].catHint;
+}
+
 function updateLanguage() {
   document.documentElement.lang = language;
   document.querySelector('meta[name="description"]').content = copy[language].description;
@@ -108,6 +116,7 @@ function updateLanguage() {
   imageDialog.setAttribute('aria-label', copy[language].imagePreview);
   catComputer.setAttribute('aria-label', copy[language].nextCat);
   catAnnouncement.textContent = copy[language].cats[screenCats[catIndex]];
+  updateCatHint();
   renderFilters();
   renderGrid();
 }
@@ -246,11 +255,27 @@ document.querySelectorAll('[data-lang]').forEach(button => button.addEventListen
   updateLanguage();
 }));
 document.querySelectorAll('.art-piece').forEach(button => button.addEventListener('click', () => openProject(button.dataset.project)));
+function setCatReaction(active) {
+  computerScreen.toggleAttribute('data-reacting', active);
+}
+
+function reactToPointer(event) {
+  if (event.pointerType !== 'touch') setCatReaction(event.type === 'pointerenter');
+}
+
+canHover.addEventListener('change', updateCatHint);
+catComputer.addEventListener('pointerenter', reactToPointer);
+catComputer.addEventListener('pointerleave', reactToPointer);
+catComputer.addEventListener('focus', () => {
+  if (catComputer.matches(':focus-visible')) setCatReaction(true);
+});
+catComputer.addEventListener('blur', () => setCatReaction(false));
 catComputer.addEventListener('click', () => {
   catIndex = (catIndex + 1) % screenCats.length;
   const cat = screenCats[catIndex];
   computerScreen.dataset.cat = cat;
   catAnnouncement.textContent = copy[language].cats[cat];
+  setCatReaction(true);
 });
 catComputer.disabled = false;
 document.getElementById('cat-hint').hidden = false;
