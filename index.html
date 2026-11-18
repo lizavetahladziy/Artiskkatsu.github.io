@@ -7,9 +7,9 @@
   <meta name="description" content="Lizaveta Hladziy — portfolio projektantki wizualnej. Web design, identyfikacja wizualna, editorial i opakowania.">
   <title>Lizaveta Hladziy — Visual designer</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=poster-studio">
+  <link rel="stylesheet" href="styles.css?v=cat-gallery">
   <script src="projects.js?v=design-lab" defer></script>
-  <script src="app.js?v=poster-studio" defer></script>
+  <script src="app.js?v=cat-gallery" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#work" data-i18n="skip">Przejdź do projektów</a>
@@ -41,19 +41,27 @@
       <div class="about-intro">
         <span class="eyebrow" data-i18n="aboutEyebrow">Kilka słów o mnie</span>
         <h2 id="about-title"><span data-i18n="aboutTitle">Estetyka z</span><br><em data-i18n="aboutItalic">intencją.</em></h2>
-        <div class="poster-studio" id="design-lab">
-          <button class="poster-machine" id="poster-machine" type="button" aria-label="Stwórz plakat" disabled>
-            <span class="poster-cabinet" aria-hidden="true">
-              <span class="poster-screen" id="poster-preview" data-poster="welcome">
-                <span class="poster-title" id="poster-title">Mała pracownia plakatów</span>
-                <span class="poster-art"></span>
+        <div class="cat-studio" id="design-lab">
+          <button class="cat-computer" id="cat-computer" type="button" aria-label="Pokaż następnego kota" disabled>
+            <span class="computer-cabinet" aria-hidden="true">
+              <span class="computer-screen" id="computer-screen" data-cat="tuxedo">
+                <span class="screen-cat">
+                  <span class="cat-tail"></span>
+                  <span class="cat-body"></span>
+                  <span class="cat-ears"></span>
+                  <span class="cat-face">
+                    <span class="cat-eye"></span><span class="cat-eye"></span>
+                    <span class="cat-muzzle"></span>
+                  </span>
+                  <span class="cat-paw"></span>
+                </span>
               </span>
-              <span class="poster-controls"><span class="poster-power"></span><span class="poster-vents"></span></span>
+              <span class="computer-controls"><span class="computer-power"></span><span class="computer-vents"></span></span>
             </span>
-            <span class="poster-stand" aria-hidden="true"></span>
+            <span class="computer-stand" aria-hidden="true"></span>
           </button>
-          <p class="poster-hint" id="poster-hint" hidden><span aria-hidden="true">↳</span> <span id="poster-instruction">Stuknij w komputer, żeby stworzyć plakat.</span></p>
-          <p class="poster-announcement" id="poster-announcement" role="status"></p>
+          <p class="cat-hint" id="cat-hint" hidden><span aria-hidden="true">↳</span> <span data-i18n="catHint">Stuknij w komputer, aby zobaczyć kolejnego kota.</span></p>
+          <p class="cat-announcement" id="cat-announcement" role="status"></p>
         </div>
       </div>
       <div class="about-copy">

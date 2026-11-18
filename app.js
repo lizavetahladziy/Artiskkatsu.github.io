@@ -10,12 +10,9 @@ const copy = {
     workIntro: 'Różne media. Ten sam głód dobrych pomysłów. Koncepcje, eksperymenty i projekty wizualne.',
     archiveEnd: 'Zawsze jest miejsce na kolejny dobry pomysł.', startProject: 'Może Twój? ↗',
     aboutEyebrow: 'Kilka słów o mnie', aboutTitle: 'Estetyka z', aboutItalic: 'intencją.',
-    poster: {
-      make: 'Stwórz plakat', again: 'Stwórz kolejny plakat',
-      hint: 'Stuknij w komputer, żeby stworzyć plakat.', nextHint: 'Stuknij ponownie po kolejny plakat.',
-      created: 'Gotowy plakat',
-      titles: { welcome: 'Mała pracownia plakatów', bloom: 'Cichy rozkwit', heart: 'Mała radość', orbit: 'Słodka orbita', cat: 'Kocia drzemka' }
-    },
+    catHint: 'Stuknij w komputer, aby zobaczyć kolejnego kota.',
+    nextCat: 'Pokaż następnego kota',
+    cats: { tuxedo: 'Czarno-biały kot.', ginger: 'Rudy kot w paski.', calico: 'Trójkolorowy kot.', sleepy: 'Śpiący szary kot.' },
     aboutLead: 'Lubię, kiedy rzeczy dobrze wyglądają. Jeszcze bardziej — kiedy mają sens.',
     aboutText: 'Pracuję nad projektami wizualnymi, które łączą estetykę z porządkiem. Interesuje mnie design, który nie potrzebuje nadmiaru efektów, żeby wyglądać pewnie.',
     skillWebTitle: 'UX/UI i projektowanie stron',
@@ -42,12 +39,9 @@ const copy = {
     workIntro: 'Different media. The same appetite for good ideas. Concepts, experiments and visual projects.',
     archiveEnd: 'There’s always room for another good idea.', startProject: 'Maybe yours? ↗',
     aboutEyebrow: 'A little about me', aboutTitle: 'Aesthetics with', aboutItalic: 'intention.',
-    poster: {
-      make: 'Make a poster', again: 'Make another poster',
-      hint: 'Tap the computer to make a poster.', nextHint: 'Tap again for another poster.',
-      created: 'Poster ready',
-      titles: { welcome: 'Mini poster studio', bloom: 'Soft Bloom', heart: 'Small Joy', orbit: 'Sweet Orbit', cat: 'Cat Nap' }
-    },
+    catHint: 'Tap the computer to see another cat.',
+    nextCat: 'Show the next cat',
+    cats: { tuxedo: 'Black-and-white cat.', ginger: 'Orange tabby cat.', calico: 'Calico cat.', sleepy: 'Sleepy gray cat.' },
     aboutLead: 'I like things that look good. Even more so when they make sense.',
     aboutText: 'I work on visual projects that combine aesthetics with order. I am interested in design that does not need excessive effects to feel confident.',
     skillWebTitle: 'UX/UI & web design',
@@ -76,13 +70,11 @@ const projectDialog = document.getElementById('project-dialog');
 const imageDialog = document.getElementById('image-dialog');
 const gallery = document.getElementById('project-gallery');
 const fullImage = document.getElementById('full-image');
-const posterMachine = document.getElementById('poster-machine');
-const posterPreview = document.getElementById('poster-preview');
-const posterTitle = document.getElementById('poster-title');
-const posterInstruction = document.getElementById('poster-instruction');
-const posterAnnouncement = document.getElementById('poster-announcement');
-const posterDesigns = ['bloom', 'heart', 'orbit', 'cat'];
-let posterIndex = -1;
+const catComputer = document.getElementById('cat-computer');
+const computerScreen = document.getElementById('computer-screen');
+const catAnnouncement = document.getElementById('cat-announcement');
+const screenCats = ['tuxedo', 'ginger', 'calico', 'sleepy'];
+let catIndex = 0;
 let language = 'pl';
 let category = 'all';
 let selectedProject = null;
@@ -102,15 +94,6 @@ function thumbnail(project) {
   if (source && typeof source !== 'string') return source.preview || source.src;
   return source ? `assets/previews/${source.replace(/\.[^.]+$/, '')}.webp` : null;
 }
-function renderPoster() {
-  const { poster } = copy[language];
-  const design = posterDesigns[posterIndex];
-  posterPreview.dataset.poster = design ?? 'welcome';
-  posterTitle.textContent = poster.titles[posterPreview.dataset.poster];
-  posterMachine.setAttribute('aria-label', design ? poster.again : poster.make);
-  posterInstruction.textContent = design ? poster.nextHint : poster.hint;
-}
-
 function updateLanguage() {
   document.documentElement.lang = language;
   document.querySelector('meta[name="description"]').content = copy[language].description;
@@ -123,7 +106,8 @@ function updateLanguage() {
   document.querySelector('.navigation').setAttribute('aria-label', copy[language].navLabel);
   filters.setAttribute('aria-label', copy[language].filterLabel);
   imageDialog.setAttribute('aria-label', copy[language].imagePreview);
-  renderPoster();
+  catComputer.setAttribute('aria-label', copy[language].nextCat);
+  catAnnouncement.textContent = copy[language].cats[screenCats[catIndex]];
   renderFilters();
   renderGrid();
 }
@@ -151,7 +135,8 @@ function renderGrid() {
   visible.forEach((project, index) => {
     const card = makeElement('article', 'project-card');
     card.dataset.project = project.number;
-    card.style.setProperty('--project-color', project.number === '11' ? '#e6e3db' : project.color);
+    card.dataset.category = project.category;
+    card.style.setProperty('--project-color', project.color);
     const button = makeElement('button', 'project-button');
     button.type = 'button';
     button.setAttribute('aria-label', `${localize(project.short)} — ${copy[language].openProject}`);
@@ -163,16 +148,21 @@ function renderGrid() {
       img.alt = '';
       img.loading = index < 2 ? 'eager' : 'lazy';
       img.decoding = 'async';
-      visual.append(img);
+      const artwork = makeElement('div', 'project-artwork');
+      artwork.append(img);
+      visual.append(artwork);
     } else {
       const cover = makeElement('div', 'video-cover');
-      cover.append(makeElement('small', '', 'MOTION / VIDEO EDIT'), makeElement('strong', '', 'forestrock.tv'), makeElement('span', 'play-icon', '↗'));
+      cover.append(makeElement('strong', '', 'forestrock.tv'), makeElement('span', 'play-icon', '▷'));
       visual.append(cover);
     }
-    visual.append(makeElement('span', 'project-open', '↗'));
     visual.setAttribute('aria-hidden', 'true');
     const info = makeElement('div', 'project-card-info');
-    info.append(makeElement('h3', '', localize(project.short)), makeElement('p', '', localize(project.type)));
+    const title = makeElement('div');
+    title.append(makeElement('h3', '', localize(project.short)), makeElement('p', '', localize(project.type)));
+    const arrow = makeElement('span', 'project-open', '↗');
+    arrow.setAttribute('aria-hidden', 'true');
+    info.append(title, arrow);
     button.append(visual, info);
     button.addEventListener('click', () => openProject(project.number));
     card.append(button);
@@ -185,6 +175,7 @@ function openProject(number) {
   if (!project) return;
   gallery.querySelectorAll('video').forEach(video => video.pause());
   selectedProject = project;
+  projectDialog.style.setProperty('--project-color', project.color);
   document.getElementById('project-label').textContent = localize(project.short);
   document.getElementById('project-category').textContent = copy[language].categories[project.category];
   document.getElementById('project-title').textContent = localize(project.title);
@@ -208,10 +199,10 @@ function openProject(number) {
     const images = project.gallery || [project.previewImage || project.image];
     images.forEach((entry, index) => {
       const { src, preview = src, width, height } = typeof entry === 'string' ? { src: entry } : entry;
-      const item = makeElement('div', 'gallery-item');
       const button = makeElement('button', 'gallery-image');
       button.type = 'button';
-      const alt = project.galleryAlt?.[language]?.[index] || `${localize(project.title)} — ${index + 1}`;
+      const description = project.galleryAlt?.[language]?.[index];
+      const alt = description || `${localize(project.title)} — ${index + 1}`;
       button.setAttribute('aria-label', `${copy[language].zoom}: ${alt}`);
       const image = makeElement('img');
       image.src = preview;
@@ -222,17 +213,23 @@ function openProject(number) {
       }
       image.loading = index === 0 ? 'eager' : 'lazy';
       image.decoding = 'async';
-      button.append(image);
+      const frame = makeElement('span', 'gallery-frame');
+      frame.append(image);
       button.addEventListener('click', () => {
         fullImage.src = src;
         fullImage.alt = alt;
         imageDialog.showModal();
         syncScrollLock();
       });
-      const caption = makeElement('div', 'gallery-caption');
-      caption.append(makeElement('span', '', `${String(index + 1).padStart(2, '0')} / ${String(images.length).padStart(2, '0')}`), makeElement('span', '', `${copy[language].zoom} ↗`));
-      item.append(button, caption);
-      gallery.append(item);
+      const caption = makeElement('span', 'gallery-caption');
+      const summary = makeElement('span', 'gallery-description');
+      if (images.length > 1) {
+        summary.append(makeElement('span', 'gallery-position', `${String(index + 1).padStart(2, '0')} / ${String(images.length).padStart(2, '0')}`));
+      }
+      if (description) summary.append(makeElement('span', '', description));
+      caption.append(summary, makeElement('span', 'gallery-zoom', `${copy[language].zoom} ↗`));
+      button.append(frame, caption);
+      gallery.append(button);
     });
   }
   const pool = visibleProjects().some(item => item.number === number) ? visibleProjects() : projects;
@@ -249,13 +246,14 @@ document.querySelectorAll('[data-lang]').forEach(button => button.addEventListen
   updateLanguage();
 }));
 document.querySelectorAll('.art-piece').forEach(button => button.addEventListener('click', () => openProject(button.dataset.project)));
-posterMachine.addEventListener('click', () => {
-  posterIndex = (posterIndex + 1) % posterDesigns.length;
-  renderPoster();
-  posterAnnouncement.textContent = `${copy[language].poster.created}. ${posterTitle.textContent}.`;
+catComputer.addEventListener('click', () => {
+  catIndex = (catIndex + 1) % screenCats.length;
+  const cat = screenCats[catIndex];
+  computerScreen.dataset.cat = cat;
+  catAnnouncement.textContent = copy[language].cats[cat];
 });
-posterMachine.disabled = false;
-document.getElementById('poster-hint').hidden = false;
+catComputer.disabled = false;
+document.getElementById('cat-hint').hidden = false;
 document.getElementById('close-project').addEventListener('click', () => projectDialog.close());
 document.getElementById('close-image').addEventListener('click', () => imageDialog.close());
 document.getElementById('next-project').addEventListener('click', () => {
