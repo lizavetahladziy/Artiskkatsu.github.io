@@ -16,7 +16,7 @@ const copy = {
     catPoses: {
       peek: 'Mei Mei przygląda się z zaciekawieniem.',
       wave: 'Mei Mei macha łapką.',
-      hop: 'Mei Mei szykuje się do skoku.',
+      hop: 'Mei Mei skacze jak królik.',
       nap: 'Mei Mei drzemie z zamkniętymi oczami.'
     },
     aboutLead: 'Lubię, kiedy rzeczy dobrze wyglądają. Jeszcze bardziej — kiedy mają sens.',
@@ -51,7 +51,7 @@ const copy = {
     catPoses: {
       peek: 'Mei Mei looks on curiously.',
       wave: 'Mei Mei waves a paw.',
-      hop: 'Mei Mei gets ready to hop.',
+      hop: 'Mei Mei hops like a bunny.',
       nap: 'Mei Mei naps with her eyes closed.'
     },
     aboutLead: 'I like things that look good. Even more so when they make sense.',
@@ -89,6 +89,7 @@ const catAnnouncement = document.getElementById('cat-announcement');
 const canHover = window.matchMedia('(hover: hover)');
 const catPoses = ['peek', 'wave', 'hop', 'nap'];
 let catPoseIndex = 0;
+let catReactionTimeout;
 let language = 'pl';
 let category = 'all';
 let selectedProject = null;
@@ -266,6 +267,7 @@ document.querySelectorAll('[data-lang]').forEach(button => button.addEventListen
 }));
 document.querySelectorAll('.art-piece').forEach(button => button.addEventListener('click', () => openProject(button.dataset.project)));
 function setCatReaction(active) {
+  clearTimeout(catReactionTimeout);
   computerScreen.toggleAttribute('data-reacting', active);
 }
 
@@ -280,12 +282,15 @@ catComputer.addEventListener('focus', () => {
   if (catComputer.matches(':focus-visible')) setCatReaction(true);
 });
 catComputer.addEventListener('blur', () => setCatReaction(false));
-catComputer.addEventListener('click', () => {
+catComputer.addEventListener('click', event => {
   catPoseIndex = (catPoseIndex + 1) % catPoses.length;
   const pose = catPoses[catPoseIndex];
   computerScreen.dataset.pose = pose;
   catAnnouncement.textContent = copy[language].catPoses[pose];
   setCatReaction(true);
+  if (event.pointerType === 'touch' || !canHover.matches) {
+    catReactionTimeout = setTimeout(() => setCatReaction(false), 950);
+  }
 });
 catComputer.disabled = false;
 document.getElementById('cat-hint').hidden = false;

@@ -694,12 +694,10 @@ h1 em {
 }
 
 .computer-screen {
-  --screen-color:#e9dfec;
-  --cat-outline:#614a43;
-  --cat-fur:#ad846a;
-  --cat-cream:#efdbc4;
-  --cat-mark:#805e50;
-  --cat-spot:#c6a28b;
+  --screen-color:#e8dfec;
+  --frame-top:0;
+  --frame-height:384;
+  --frame-size:clamp(142px,15vw,190px);
   position:relative;
   isolation:isolate;
   overflow:hidden;
@@ -708,8 +706,8 @@ h1 em {
   height:clamp(176px,17vw,220px);
   border:clamp(4px,.75vw,9px) solid #37303e;
   border-radius:clamp(12px,2vw,22px);
-  background:radial-gradient(circle,#5a405930 1px,transparent 1.4px) 0 0/12px 12px,
-    radial-gradient(ellipse at 50% 38%,#fff9,transparent 75%),var(--screen-color);
+  background:radial-gradient(circle,#5a405922 .9px,transparent 1.4px) 0 0/12px 12px,
+    radial-gradient(ellipse at 50% 38%,#fff8,transparent 75%),var(--screen-color);
   box-shadow:0 0 0 1px #62566d,inset 0 0 22px #241a2d24;
   transition:background-color .2s
 }
@@ -723,368 +721,88 @@ h1 em {
   content:''
 }
 
-.cat-scene {
+/* The atlas is 1024 × 1536. Each pose uses a 512px column and its measured row bounds. */
+.mei-mei-scene {
   position:relative;
-  width:222px;
-  height:155px
+  overflow:hidden;
+  width:min(100%,calc(var(--frame-size) * 512 / var(--frame-height)));
+  aspect-ratio:512 / var(--frame-height)
 }
 
-@media(min-width:1150px) {
-  .cat-scene {
-    transform:scale(1.13)
-  }
-}
-
-@media(max-width:320px), (601px <= width <= 700px) {
-  .cat-scene {
-    transform:scale(.86)
-  }
-}
-
-.cat-character,.cat-shadow,.cat-tail,.cat-body,.cat-head,.cat-ear,.cat-face,.cat-eye,
-.cat-muzzle,.cat-cream,.cat-forehead,.cat-cheeks,.cat-wave,.cat-toy,.cat-spark {
-  position:absolute
-}
-
-.cat-character {
-  inset:0
-}
-
-.cat-shadow {
-  bottom:0;
-  left:25px;
-  width:179px;
-  height:13px;
-  border-radius:50%;
-  background:#68514625
-}
-
-.cat-tail {
-  right:1px;
-  bottom:15px;
-  width:38px;
-  height:27px;
-  border:4px solid var(--cat-outline);
-  border-radius:52% 64% 47% 51%;
-  background:radial-gradient(ellipse at 95% 49%,var(--cat-mark) 0 23%,transparent 24%),var(--cat-fur);
-  transform:rotate(-20deg)
-}
-
-.cat-body {
-  inset:auto auto 6px 56px;
-  width:144px;
-  height:81px;
-  border:4px solid var(--cat-outline);
-  border-radius:44% 61% 46% 37% / 59% 76% 35% 43%;
-  background:radial-gradient(ellipse at 83% 6%,var(--cat-mark) 0 10%,transparent 11%),
-    radial-gradient(ellipse at 97% 20%,var(--cat-mark) 0 9%,transparent 10%),
-    radial-gradient(ellipse at 26% 106%,var(--cat-cream) 0 51%,transparent 52%),var(--cat-fur)
-}
-
-/* Draw the head and ears as one silhouette so the outline follows the ear tips. */
-.cat-head {
-  --head-shape:path('M 17 57 C 10 46 3 22 12 14 C 21 5 43 16 65 36 C 78 30 95 29 108 35 C 128 16 150 6 160 14 C 168 22 165 44 157 57 C 167 68 173 81 172 94 C 171 111 155 122 130 129 C 107 136 66 137 42 130 C 19 124 5 113 3 96 C 2 82 8 67 17 57 Z');
-  top:3px;
-  left:3px;
-  width:174px;
-  height:137px;
-  clip-path:var(--head-shape);
-  background:var(--cat-outline);
-  transform:scaleY(.91);
-  transform-origin:center top
-}
-
-.cat-face {
-  inset:0;
-  clip-path:var(--head-shape);
-  transform:scale(.947,.929);
-  background:radial-gradient(ellipse at 51% 4%,var(--cat-spot) 0 32%,transparent 67%),var(--cat-fur)
-}
-
-.cat-ear {
-  top:20px;
-  left:17px;
-  width:38px;
-  height:34px;
-  background:#ddb2a2;
-  clip-path:path('M 2 3 C 12 2 26 12 36 21 C 24 23 15 30 9 32 C 5 24 1 12 2 3 Z')
-}
-
-.cat-ear + .cat-ear {
-  top:20px;
-  right:17px;
-  left:auto;
-  transform:scaleX(-1)
-}
-
-.cat-cream {
-  inset:0;
-  clip-path:path('M -6 110 C 29 115 63 108 87 92 C 110 108 145 116 179 107 L 179 140 L -6 140 Z');
-  background:var(--cat-cream)
-}
-
-.cat-forehead {
-  top:34px;
-  left:84px;
-  width:6px;
-  height:22px;
-  border-radius:55%;
-  background:var(--cat-mark);
-  box-shadow:-14px 2px 0 -1px var(--cat-mark),14px 0 0 -1px var(--cat-mark);
-  transform:rotate(9deg)
-}
-
-.cat-cheeks {
-  inset:0
-}
-
-.cat-cheeks::before,.cat-cheeks::after {
+.mei-mei-frame {
   position:absolute;
-  top:79px;
-  left:1px;
-  width:24px;
-  height:4px;
-  border-radius:6px;
-  background:var(--cat-mark);
-  box-shadow:-2px 10px 0 var(--cat-mark);
-  transform:rotate(11deg);
-  content:''
-}
-
-.cat-cheeks::after {
-  top:78px;
-  right:0;
-  left:auto;
-  transform:rotate(-11deg) scaleX(-1)
-}
-
-.cat-eye {
-  top:75px;
-  left:46px;
-  width:20px;
-  height:23px;
-  border:1px solid #372623;
-  border-radius:50%;
-  background:radial-gradient(circle at 66% 27%,#fff1dc 0 9%,transparent 10%),
-    radial-gradient(ellipse at 51% 53%,#352724 0 54%,#967656 61% 86%,#594037 92%)
-}
-
-.cat-eye + .cat-eye {
-  right:46px;
-  left:auto
-}
-
-.cat-muzzle {
-  top:99px;
-  left:83px;
-  width:8px;
-  height:5px;
-  border-radius:55% 55% 78% 78%;
-  background:#a26d66
-}
-
-.cat-muzzle::after {
-  position:absolute;
-  top:10px;
+  top:calc(-100% * var(--frame-top) / var(--frame-height));
   left:0;
-  width:8px;
-  height:1.5px;
-  border-radius:50%;
-  background:var(--cat-outline);
-  content:''
+  width:200%;
+  max-width:none;
+  height:auto;
+  pointer-events:none
 }
 
-.cat-wave {
-  bottom:15px;
-  left:62px;
-  width:32px;
-  height:21px;
-  border:3px solid var(--cat-outline);
-  border-radius:57% 55% 45% 46%;
-  opacity:0;
-  transform:translate(-18px,-22px) rotate(-36deg);
-  background:radial-gradient(circle at 29% 44%,#d99e8b 0 7%,transparent 8%),
-    radial-gradient(circle at 52% 27%,#d99e8b 0 7%,transparent 8%),
-    radial-gradient(ellipse at 63% 68%,#d99e8b 0 16%,transparent 17%),var(--cat-cream)
-}
-
-.cat-toy,.cat-spark {
+.mei-mei-reaction {
+  left:-100%;
   opacity:0
 }
 
-.cat-toy {
-  right:0;
-  bottom:36px;
-  width:8px;
-  aspect-ratio:1;
-  border-radius:50%;
-  background:#ab5570;
-  box-shadow:0 0 8px #d568882c
+.computer-screen[data-reacting] .mei-mei-rest {
+  opacity:0
 }
 
-.cat-spark {
-  top:14px;
-  right:23px;
-  width:12px;
-  aspect-ratio:1;
-  background:#b47569;
-  clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)
-}
-
-.computer-screen[data-pose=peek] .cat-head {
-  transform:rotate(-5deg) scaleY(.91)
+.computer-screen[data-reacting] .mei-mei-reaction {
+  opacity:1
 }
 
 .computer-screen[data-pose=wave] {
-  --screen-color:#f2e2d1
-}
-
-.computer-screen[data-pose=wave] .cat-body {
-  inset:auto auto 5px 63px;
-  width:118px;
-  height:96px
-}
-
-.computer-screen[data-pose=wave] .cat-tail {
-  right:23px
-}
-
-.computer-screen[data-pose=wave] .cat-head {
-  left:22px;
-  transform:rotate(5deg) scale(.90,.88)
-}
-
-.computer-screen[data-pose=wave] .cat-wave {
-  opacity:1;
-  transform:translate(-20px,-22px) rotate(-27deg)
+  --screen-color:#f0e1d1;
+  --frame-top:384;
+  --frame-height:406
 }
 
 .computer-screen[data-pose=hop] {
-  --screen-color:#e2e7ce
-}
-
-.computer-screen[data-pose=hop] .cat-character {
-  transform:translate(4px,7px) scaleX(-1)
-}
-
-.computer-screen[data-pose=hop] .cat-head {
-  left:9px;
-  top:21px;
-  transform:rotate(-9deg) scale(.88,.82)
-}
-
-.computer-screen[data-pose=hop] .cat-body {
-  height:68px
-}
-
-.computer-screen[data-pose=hop] .cat-tail {
-  bottom:31px
-}
-
-.computer-screen[data-pose=hop] .cat-toy {
-  right:3px;
-  bottom:11px;
-  width:13px;
-  opacity:1;
-  background:#a96763;
-  box-shadow:inset -2px -2px #77464544
+  --screen-color:#e2e7ce;
+  --frame-top:795;
+  --frame-height:372
 }
 
 .computer-screen[data-pose=nap] {
-  --screen-color:#e8e1ed
+  --screen-color:#e8e1ed;
+  --frame-top:1170;
+  --frame-height:366
 }
 
-.computer-screen[data-pose=nap] .cat-shadow {
-  bottom:1px;
-  left:19px;
-  width:186px;
-  height:27px;
-  border:2px solid #a493ae;
-  border-radius:49% 50% 41% 41%;
-  background:#d3c2dc
+.computer-screen[data-pose=peek][data-reacting] .mei-mei-scene {
+  animation:mei-mei-look .52s ease-out
 }
 
-.computer-screen[data-pose=nap] .cat-body {
-  bottom:16px;
-  height:66px
+.computer-screen[data-pose=wave][data-reacting] .mei-mei-scene {
+  animation:mei-mei-wave .58s ease-in-out
 }
 
-.computer-screen[data-pose=nap] .cat-tail {
-  bottom:24px;
-  right:3px
+.computer-screen[data-pose=hop][data-reacting] .mei-mei-scene {
+  animation:mei-mei-hop .7s ease-in-out
 }
 
-.computer-screen[data-pose=nap] .cat-head {
-  transform:translate(13px,23px) rotate(-9deg) scale(.86,.82)
+.computer-screen[data-pose=nap][data-reacting] .mei-mei-scene {
+  animation:mei-mei-wake .55s ease-out
 }
 
-.computer-screen[data-pose=nap]:not([data-reacting]) .cat-eye {
-  top:85px;
-  height:8px;
-  background:none;
-  border:0;
-  border-bottom:2.5px solid var(--cat-outline);
-  border-radius:0 0 70% 70%
+@keyframes mei-mei-look {
+  40% { transform:rotate(-3deg) }
 }
 
-.computer-screen[data-pose=peek][data-reacting] .cat-head {
-  transform:rotate(6deg) scaleY(.91);
-  animation:cat-peek .55s ease-out
+@keyframes mei-mei-wave {
+  22%,66% { transform:translateY(-2px) rotate(2deg) }
+  44% { transform:rotate(-2deg) }
 }
 
-.computer-screen[data-pose=peek][data-reacting] .cat-spark {
-  opacity:1;
-  animation:cat-spark .55s ease-out
+@keyframes mei-mei-hop {
+  29% { transform:translate(6px,-11px) }
+  53% { transform:translate(10px,2px) }
+  73% { transform:translate(5px,-6px) }
 }
 
-.computer-screen[data-pose=wave][data-reacting] .cat-wave {
-  animation:cat-wave .9s ease-in-out
-}
-
-.computer-screen[data-pose=hop][data-reacting] .cat-character {
-  transform:translate(10px,7px) scaleX(-1);
-  animation:cat-hop .7s ease-in-out
-}
-
-.computer-screen[data-pose=hop][data-reacting] .cat-toy {
-  animation:cat-toy .7s ease-in-out
-}
-
-.computer-screen[data-pose=nap][data-reacting] .cat-head {
-  transform:translate(11px,14px) rotate(4deg) scale(.86,.82);
-  animation:cat-wake .55s ease-out
-}
-
-@keyframes cat-peek {
-  0% { transform:rotate(-5deg) scaleY(.91) }
-  68% { transform:rotate(9deg) scaleY(.91) }
-}
-
-@keyframes cat-wave {
-  18%,59% { transform:translate(-29px,-37px) rotate(-61deg) }
-  39%,80% { transform:translate(-27px,-32px) rotate(-13deg) }
-}
-
-@keyframes cat-hop {
-  0% { transform:translate(4px,7px) scaleX(-1) }
-  26% { transform:translate(7px,-17px) scaleX(-1) }
-  50% { transform:translate(8px,7px) scale(-1,.95) }
-  72% { transform:translate(12px,-8px) scaleX(-1) }
-}
-
-@keyframes cat-toy {
-  20% { transform:translate(3px,-6px) }
-  55% { transform:translate(9px,0) }
-}
-
-@keyframes cat-wake {
-  0% { transform:translate(13px,23px) rotate(-9deg) scale(.86,.82) }
-  68% { transform:translate(10px,12px) rotate(7deg) scale(.86,.82) }
-}
-
-@keyframes cat-spark {
-  0% { opacity:0; transform:scale(.3) }
-  68% { opacity:1; transform:scale(1.23) }
+@keyframes mei-mei-wake {
+  55% { transform:translateY(-4px) }
 }
 
 .computer-controls {
