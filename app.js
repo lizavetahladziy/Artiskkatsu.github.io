@@ -10,10 +10,15 @@ const copy = {
     workIntro: 'Różne media. Ten sam głód dobrych pomysłów. Koncepcje, eksperymenty i projekty wizualne.',
     archiveEnd: 'Zawsze jest miejsce na kolejny dobry pomysł.', startProject: 'Może Twój? ↗',
     aboutEyebrow: 'Kilka słów o mnie', aboutTitle: 'Estetyka z', aboutItalic: 'intencją.',
-    catHint: 'Kliknij lub stuknij po kolejnego kota.',
-    catHoverHint: 'Najedź, żeby się pobawić. Kliknij po kolejnego kota.',
-    nextCat: 'Pokaż następnego kota',
-    cats: { tuxedo: 'Czarno-biały kot.', ginger: 'Rudy kot w paski.', calico: 'Trójkolorowy kot.', sleepy: 'Śpiący szary kot.' },
+    catHint: 'Stuknij, by zmienić pozę Mei Mei.',
+    catHoverHint: 'Najedź, by się pobawić. Kliknij, by zmienić pozę Mei Mei.',
+    nextCatPose: 'Pokaż kolejną pozę Mei Mei',
+    catPoses: {
+      peek: 'Mei Mei przygląda się z zaciekawieniem.',
+      wave: 'Mei Mei macha łapką.',
+      hop: 'Mei Mei szykuje się do skoku.',
+      nap: 'Mei Mei drzemie z zamkniętymi oczami.'
+    },
     aboutLead: 'Lubię, kiedy rzeczy dobrze wyglądają. Jeszcze bardziej — kiedy mają sens.',
     aboutText: 'Pracuję nad projektami wizualnymi, które łączą estetykę z porządkiem. Interesuje mnie design, który nie potrzebuje nadmiaru efektów, żeby wyglądać pewnie.',
     skillWebTitle: 'UX/UI i projektowanie stron',
@@ -40,10 +45,15 @@ const copy = {
     workIntro: 'Different media. The same appetite for good ideas. Concepts, experiments and visual projects.',
     archiveEnd: 'There’s always room for another good idea.', startProject: 'Maybe yours? ↗',
     aboutEyebrow: 'A little about me', aboutTitle: 'Aesthetics with', aboutItalic: 'intention.',
-    catHint: 'Tap to meet the next cat.',
-    catHoverHint: 'Hover to play. Click for the next cat.',
-    nextCat: 'Show the next cat',
-    cats: { tuxedo: 'Black-and-white cat.', ginger: 'Orange tabby cat.', calico: 'Calico cat.', sleepy: 'Sleepy gray cat.' },
+    catHint: 'Tap to change Mei Mei’s pose.',
+    catHoverHint: 'Hover to play. Click to change Mei Mei’s pose.',
+    nextCatPose: 'Show the next Mei Mei pose',
+    catPoses: {
+      peek: 'Mei Mei looks on curiously.',
+      wave: 'Mei Mei waves a paw.',
+      hop: 'Mei Mei gets ready to hop.',
+      nap: 'Mei Mei naps with her eyes closed.'
+    },
     aboutLead: 'I like things that look good. Even more so when they make sense.',
     aboutText: 'I work on visual projects that combine aesthetics with order. I am interested in design that does not need excessive effects to feel confident.',
     skillWebTitle: 'UX/UI & web design',
@@ -77,8 +87,8 @@ const computerScreen = document.getElementById('computer-screen');
 const catHintCopy = document.getElementById('cat-hint-copy');
 const catAnnouncement = document.getElementById('cat-announcement');
 const canHover = window.matchMedia('(hover: hover)');
-const screenCats = ['ginger', 'tuxedo', 'calico', 'sleepy'];
-let catIndex = 0;
+const catPoses = ['peek', 'wave', 'hop', 'nap'];
+let catPoseIndex = 0;
 let language = 'pl';
 let category = 'all';
 let selectedProject = null;
@@ -114,8 +124,8 @@ function updateLanguage() {
   document.querySelector('.navigation').setAttribute('aria-label', copy[language].navLabel);
   filters.setAttribute('aria-label', copy[language].filterLabel);
   imageDialog.setAttribute('aria-label', copy[language].imagePreview);
-  catComputer.setAttribute('aria-label', copy[language].nextCat);
-  catAnnouncement.textContent = copy[language].cats[screenCats[catIndex]];
+  catComputer.setAttribute('aria-label', copy[language].nextCatPose);
+  catAnnouncement.textContent = copy[language].catPoses[catPoses[catPoseIndex]];
   updateCatHint();
   renderFilters();
   renderGrid();
@@ -271,10 +281,10 @@ catComputer.addEventListener('focus', () => {
 });
 catComputer.addEventListener('blur', () => setCatReaction(false));
 catComputer.addEventListener('click', () => {
-  catIndex = (catIndex + 1) % screenCats.length;
-  const cat = screenCats[catIndex];
-  computerScreen.dataset.cat = cat;
-  catAnnouncement.textContent = copy[language].cats[cat];
+  catPoseIndex = (catPoseIndex + 1) % catPoses.length;
+  const pose = catPoses[catPoseIndex];
+  computerScreen.dataset.pose = pose;
+  catAnnouncement.textContent = copy[language].catPoses[pose];
   setCatReaction(true);
 });
 catComputer.disabled = false;

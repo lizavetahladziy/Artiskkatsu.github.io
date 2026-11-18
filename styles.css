@@ -694,13 +694,12 @@ h1 em {
 }
 
 .computer-screen {
-  --screen-color:#f4e7d6;
-  --cat-outline:#a87444;
-  --cat-fur:#f4ca84;
-  --cat-cream:#fffaf0;
-  --cat-mark:#dfa267;
-  --cat-spot:#efd19c;
-  --cat-cap:var(--cat-fur);
+  --screen-color:#e9dfec;
+  --cat-outline:#614a43;
+  --cat-fur:#ad846a;
+  --cat-cream:#efdbc4;
+  --cat-mark:#805e50;
+  --cat-spot:#c6a28b;
   position:relative;
   isolation:isolate;
   overflow:hidden;
@@ -762,15 +761,13 @@ h1 em {
 
 .cat-tail {
   right:1px;
-  bottom:5px;
-  width:65px;
-  height:60px;
+  bottom:15px;
+  width:38px;
+  height:27px;
   border:4px solid var(--cat-outline);
-  border-radius:52% 58% 48% 46%;
-  background:radial-gradient(ellipse at 86% 7%,var(--cat-mark) 0 30%,transparent 31%),
-    radial-gradient(ellipse at 100% 35%,var(--cat-mark) 0 27%,transparent 28%),var(--cat-fur);
-  transform:rotate(-22deg);
-  transform-origin:19% 73%
+  border-radius:52% 64% 47% 51%;
+  background:radial-gradient(ellipse at 95% 49%,var(--cat-mark) 0 23%,transparent 24%),var(--cat-fur);
+  transform:rotate(-20deg)
 }
 
 .cat-body {
@@ -779,14 +776,14 @@ h1 em {
   height:81px;
   border:4px solid var(--cat-outline);
   border-radius:44% 61% 46% 37% / 59% 76% 35% 43%;
-  background:radial-gradient(ellipse at 95% 14%,var(--cat-mark) 0 10%,transparent 11%),
-    radial-gradient(ellipse at 84% 9%,var(--cat-fur) 0 26%,transparent 27%),
-    radial-gradient(ellipse at 7% 27%,var(--cat-spot) 0 24%,transparent 25%),var(--cat-cream)
+  background:radial-gradient(ellipse at 83% 6%,var(--cat-mark) 0 10%,transparent 11%),
+    radial-gradient(ellipse at 97% 20%,var(--cat-mark) 0 9%,transparent 10%),
+    radial-gradient(ellipse at 26% 106%,var(--cat-cream) 0 51%,transparent 52%),var(--cat-fur)
 }
 
 /* Draw the head and ears as one silhouette so the outline follows the ear tips. */
 .cat-head {
-  --head-shape:path('M 15 55 C 17 38 22 17 33 9 C 44 0 58 11 70 31 C 80 28 91 28 102 30 C 114 14 128 1 140 5 C 154 9 157 35 157 54 C 166 65 171 78 172 90 C 173 108 156 121 131 128 C 108 135 65 136 43 129 C 18 122 5 111 3 94 C 2 80 7 67 15 55 Z');
+  --head-shape:path('M 17 57 C 10 46 3 22 12 14 C 21 5 43 16 65 36 C 78 30 95 29 108 35 C 128 16 150 6 160 14 C 168 22 165 44 157 57 C 167 68 173 81 172 94 C 171 111 155 122 130 129 C 107 136 66 137 42 130 C 19 124 5 113 3 96 C 2 82 8 67 17 57 Z');
   top:3px;
   left:3px;
   width:174px;
@@ -801,39 +798,39 @@ h1 em {
   inset:0;
   clip-path:var(--head-shape);
   transform:scale(.947,.929);
-  background:var(--cat-cap)
+  background:radial-gradient(ellipse at 51% 4%,var(--cat-spot) 0 32%,transparent 67%),var(--cat-fur)
 }
 
 .cat-ear {
-  top:17px;
-  left:26px;
-  width:33px;
-  height:33px;
-  background:var(--cat-cream);
-  clip-path:path('M 1 32 C 3 18 8 5 15 2 C 22 0 29 12 32 23 C 20 25 12 29 1 32 Z')
+  top:20px;
+  left:17px;
+  width:38px;
+  height:34px;
+  background:#ddb2a2;
+  clip-path:path('M 2 3 C 12 2 26 12 36 21 C 24 23 15 30 9 32 C 5 24 1 12 2 3 Z')
 }
 
 .cat-ear + .cat-ear {
-  top:16px;
-  right:24px;
+  top:20px;
+  right:17px;
   left:auto;
   transform:scaleX(-1)
 }
 
 .cat-cream {
   inset:0;
-  clip-path:path('M -6 99 C 39 106 70 92 87 66 C 104 94 133 106 179 96 L 179 140 L -6 140 Z');
+  clip-path:path('M -6 110 C 29 115 63 108 87 92 C 110 108 145 116 179 107 L 179 140 L -6 140 Z');
   background:var(--cat-cream)
 }
 
 .cat-forehead {
-  top:30px;
-  left:83px;
-  width:8px;
-  height:25px;
+  top:34px;
+  left:84px;
+  width:6px;
+  height:22px;
   border-radius:55%;
   background:var(--cat-mark);
-  box-shadow:-17px 1px 0 -1px var(--cat-mark),17px -2px 0 -1px var(--cat-mark);
+  box-shadow:-14px 2px 0 -1px var(--cat-mark),14px 0 0 -1px var(--cat-mark);
   transform:rotate(9deg)
 }
 
@@ -843,9 +840,9 @@ h1 em {
 
 .cat-cheeks::before,.cat-cheeks::after {
   position:absolute;
-  top:75px;
+  top:79px;
   left:1px;
-  width:18px;
+  width:24px;
   height:4px;
   border-radius:6px;
   background:var(--cat-mark);
@@ -855,33 +852,46 @@ h1 em {
 }
 
 .cat-cheeks::after {
-  top:72px;
+  top:78px;
   right:0;
   left:auto;
   transform:rotate(-11deg) scaleX(-1)
 }
 
 .cat-eye {
-  top:85px;
-  left:53px;
-  width:11px;
-  height:15px;
-  border-radius:49%;
-  background:#3a261f
+  top:75px;
+  left:46px;
+  width:20px;
+  height:23px;
+  border:1px solid #372623;
+  border-radius:50%;
+  background:radial-gradient(circle at 66% 27%,#fff1dc 0 9%,transparent 10%),
+    radial-gradient(ellipse at 51% 53%,#352724 0 54%,#967656 61% 86%,#594037 92%)
 }
 
 .cat-eye + .cat-eye {
-  right:53px;
+  right:46px;
   left:auto
 }
 
 .cat-muzzle {
-  top:96px;
-  left:84px;
-  width:7px;
+  top:99px;
+  left:83px;
+  width:8px;
   height:5px;
+  border-radius:55% 55% 78% 78%;
+  background:#a26d66
+}
+
+.cat-muzzle::after {
+  position:absolute;
+  top:10px;
+  left:0;
+  width:8px;
+  height:1.5px;
   border-radius:50%;
-  background:#d89575
+  background:var(--cat-outline);
+  content:''
 }
 
 .cat-wave {
@@ -921,100 +931,155 @@ h1 em {
   clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)
 }
 
-.computer-screen[data-cat=tuxedo] {
-  --screen-color:#e8ddec;
-  --cat-outline:#654c49;
-  --cat-fur:#70616b;
-  --cat-mark:#84727c;
-  --cat-spot:#dcd1d4
+.computer-screen[data-pose=peek] .cat-head {
+  transform:rotate(-5deg) scaleY(.91)
 }
 
-.computer-screen[data-cat=calico] {
-  --screen-color:#e5e8cf;
-  --cat-outline:#987052;
-  --cat-fur:#ead9bc;
-  --cat-mark:#d39562;
-  --cat-spot:#e7b483;
-  --cat-cap:radial-gradient(ellipse at 12% 32%,#e2a26c 0 28%,transparent 29%),
-    radial-gradient(ellipse at 97% 17%,#9a7a80 0 29%,transparent 30%),var(--cat-fur)
+.computer-screen[data-pose=wave] {
+  --screen-color:#f2e2d1
 }
 
-.computer-screen[data-cat=sleepy] {
-  --screen-color:#eedde0;
-  --cat-outline:#8f746d;
-  --cat-fur:#c6aaa8;
-  --cat-mark:#b18e8d;
-  --cat-spot:#e2c5c1
+.computer-screen[data-pose=wave] .cat-body {
+  inset:auto auto 5px 63px;
+  width:118px;
+  height:96px
 }
 
-.computer-screen[data-cat=sleepy] .cat-head {
-  transform:translate(-3px,8px) rotate(-5deg) scaleY(.91)
+.computer-screen[data-pose=wave] .cat-tail {
+  right:23px
 }
 
-.computer-screen[data-cat=sleepy]:not([data-reacting]) .cat-eye {
+.computer-screen[data-pose=wave] .cat-head {
+  left:22px;
+  transform:rotate(5deg) scale(.90,.88)
+}
+
+.computer-screen[data-pose=wave] .cat-wave {
+  opacity:1;
+  transform:translate(-20px,-22px) rotate(-27deg)
+}
+
+.computer-screen[data-pose=hop] {
+  --screen-color:#e2e7ce
+}
+
+.computer-screen[data-pose=hop] .cat-character {
+  transform:translate(4px,7px) scaleX(-1)
+}
+
+.computer-screen[data-pose=hop] .cat-head {
+  left:9px;
+  top:21px;
+  transform:rotate(-9deg) scale(.88,.82)
+}
+
+.computer-screen[data-pose=hop] .cat-body {
+  height:68px
+}
+
+.computer-screen[data-pose=hop] .cat-tail {
+  bottom:31px
+}
+
+.computer-screen[data-pose=hop] .cat-toy {
+  right:3px;
+  bottom:11px;
+  width:13px;
+  opacity:1;
+  background:#a96763;
+  box-shadow:inset -2px -2px #77464544
+}
+
+.computer-screen[data-pose=nap] {
+  --screen-color:#e8e1ed
+}
+
+.computer-screen[data-pose=nap] .cat-shadow {
+  bottom:1px;
+  left:19px;
+  width:186px;
+  height:27px;
+  border:2px solid #a493ae;
+  border-radius:49% 50% 41% 41%;
+  background:#d3c2dc
+}
+
+.computer-screen[data-pose=nap] .cat-body {
+  bottom:16px;
+  height:66px
+}
+
+.computer-screen[data-pose=nap] .cat-tail {
+  bottom:24px;
+  right:3px
+}
+
+.computer-screen[data-pose=nap] .cat-head {
+  transform:translate(13px,23px) rotate(-9deg) scale(.86,.82)
+}
+
+.computer-screen[data-pose=nap]:not([data-reacting]) .cat-eye {
+  top:85px;
   height:8px;
   background:none;
-  border-bottom:2px solid var(--cat-outline);
+  border:0;
+  border-bottom:2.5px solid var(--cat-outline);
   border-radius:0 0 70% 70%
 }
 
-.computer-screen[data-cat=tuxedo][data-reacting] .cat-wave {
-  opacity:1;
-  animation:cat-wave .9s ease-in-out
+.computer-screen[data-pose=peek][data-reacting] .cat-head {
+  transform:rotate(6deg) scaleY(.91);
+  animation:cat-peek .55s ease-out
 }
 
-.computer-screen[data-cat=ginger][data-reacting] .cat-tail {
-  transform:rotate(-45deg);
-  animation:cat-tail-swish .9s ease-in-out
-}
-
-.computer-screen[data-cat=calico][data-reacting] .cat-character {
-  transform:translateX(7px);
-  animation:cat-pounce .85s ease-in-out
-}
-
-.computer-screen[data-cat=calico][data-reacting] .cat-toy {
-  opacity:1;
-  animation:cat-toy .85s ease-in-out
-}
-
-.computer-screen[data-cat=sleepy][data-reacting] .cat-head {
-  transform:translate(-2px,2px) rotate(4deg) scaleY(.91);
-  animation:cat-wake .5s ease-out
-}
-
-.computer-screen[data-cat=sleepy][data-reacting] .cat-spark {
+.computer-screen[data-pose=peek][data-reacting] .cat-spark {
   opacity:1;
   animation:cat-spark .55s ease-out
 }
 
+.computer-screen[data-pose=wave][data-reacting] .cat-wave {
+  animation:cat-wave .9s ease-in-out
+}
+
+.computer-screen[data-pose=hop][data-reacting] .cat-character {
+  transform:translate(10px,7px) scaleX(-1);
+  animation:cat-hop .7s ease-in-out
+}
+
+.computer-screen[data-pose=hop][data-reacting] .cat-toy {
+  animation:cat-toy .7s ease-in-out
+}
+
+.computer-screen[data-pose=nap][data-reacting] .cat-head {
+  transform:translate(11px,14px) rotate(4deg) scale(.86,.82);
+  animation:cat-wake .55s ease-out
+}
+
+@keyframes cat-peek {
+  0% { transform:rotate(-5deg) scaleY(.91) }
+  68% { transform:rotate(9deg) scaleY(.91) }
+}
+
 @keyframes cat-wave {
-  0% { transform:translate(0,0) rotate(0) }
-  28%,68% { transform:translate(-24px,-31px) rotate(-58deg) }
-  46%,86% { transform:translate(-18px,-27px) rotate(-20deg) }
+  18%,59% { transform:translate(-29px,-37px) rotate(-61deg) }
+  39%,80% { transform:translate(-27px,-32px) rotate(-13deg) }
 }
 
-@keyframes cat-tail-swish {
-  0% { transform:rotate(-22deg) }
-  25%,70% { transform:rotate(-56deg) }
-  48%,90% { transform:rotate(-14deg) }
-}
-
-@keyframes cat-pounce {
-  0% { transform:translateX(0) }
-  30% { transform:translate(-5px,2px) scale(.98) }
-  66% { transform:translate(11px,-6px) scale(1.02) }
+@keyframes cat-hop {
+  0% { transform:translate(4px,7px) scaleX(-1) }
+  26% { transform:translate(7px,-17px) scaleX(-1) }
+  50% { transform:translate(8px,7px) scale(-1,.95) }
+  72% { transform:translate(12px,-8px) scaleX(-1) }
 }
 
 @keyframes cat-toy {
-  0% { opacity:0; transform:translate(-6px,2px) }
-  45% { opacity:1; transform:translate(-2px,5px) }
-  70% { transform:translate(5px,-4px) }
+  20% { transform:translate(3px,-6px) }
+  55% { transform:translate(9px,0) }
 }
 
 @keyframes cat-wake {
-  0% { transform:translate(-3px,8px) rotate(-5deg) scaleY(.91) }
-  65% { transform:translate(-2px,0) rotate(6deg) scaleY(.91) }
+  0% { transform:translate(13px,23px) rotate(-9deg) scale(.86,.82) }
+  68% { transform:translate(10px,12px) rotate(7deg) scale(.86,.82) }
 }
 
 @keyframes cat-spark {
