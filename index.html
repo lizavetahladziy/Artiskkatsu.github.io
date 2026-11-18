@@ -7,9 +7,9 @@
   <meta name="description" content="Lizaveta Hladziy — portfolio projektantki wizualnej. Web design, identyfikacja wizualna, editorial i opakowania.">
   <title>Lizaveta Hladziy — Visual designer</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=design-lab">
+  <link rel="stylesheet" href="styles.css?v=poster-studio">
   <script src="projects.js?v=design-lab" defer></script>
-  <script src="app.js?v=cv-refresh" defer></script>
+  <script src="app.js?v=poster-studio" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#work" data-i18n="skip">Przejdź do projektów</a>
@@ -41,22 +41,20 @@
       <div class="about-intro">
         <span class="eyebrow" data-i18n="aboutEyebrow">Kilka słów o mnie</span>
         <h2 id="about-title"><span data-i18n="aboutTitle">Estetyka z</span><br><em data-i18n="aboutItalic">intencją.</em></h2>
-        <div class="signature" aria-hidden="true">Lizaveta<span>↗</span></div>
-        <section class="design-lab" id="design-lab" data-lens="structure" aria-labelledby="design-lab-title">
-          <h3 id="design-lab-title" data-i18n="labTitle">Jak projektuję</h3>
-          <div class="design-lab-controls" id="design-lab-controls" role="group" aria-labelledby="design-lab-title" hidden>
-            <button type="button" data-lens-option="structure" aria-pressed="true" aria-controls="design-lab-panel" data-i18n="labStructure">Struktura</button>
-            <button type="button" data-lens-option="character" aria-pressed="false" aria-controls="design-lab-panel" data-i18n="labCharacter">Charakter</button>
-            <button type="button" data-lens-option="rhythm" aria-pressed="false" aria-controls="design-lab-panel" data-i18n="labRhythm">Rytm</button>
-          </div>
-          <div class="design-lab-panel" id="design-lab-panel">
-            <div class="design-lab-art" aria-hidden="true">
-              <span class="design-lab-echo">lh.</span><span class="design-lab-mark">lh<span>.</span></span><span class="design-lab-echo">lh.</span>
-            </div>
-            <p id="design-lab-note" aria-live="polite">Zaczynam od uporządkowania informacji, żeby od razu było jasne, co zrobić dalej.</p>
-            <button class="text-link design-lab-project" type="button" id="design-lab-project" hidden><span id="design-lab-project-label">Zobacz Chota</span><span aria-hidden="true">↗</span></button>
-          </div>
-        </section>
+        <div class="poster-studio" id="design-lab">
+          <button class="poster-machine" id="poster-machine" type="button" aria-label="Stwórz plakat" disabled>
+            <span class="poster-cabinet" aria-hidden="true">
+              <span class="poster-screen" id="poster-preview" data-poster="welcome">
+                <span class="poster-title" id="poster-title">Mała pracownia plakatów</span>
+                <span class="poster-art"></span>
+              </span>
+              <span class="poster-controls"><span class="poster-power"></span><span class="poster-vents"></span></span>
+            </span>
+            <span class="poster-stand" aria-hidden="true"></span>
+          </button>
+          <p class="poster-hint" id="poster-hint" hidden><span aria-hidden="true">↳</span> <span id="poster-instruction">Stuknij w komputer, żeby stworzyć plakat.</span></p>
+          <p class="poster-announcement" id="poster-announcement" role="status"></p>
+        </div>
       </div>
       <div class="about-copy">
         <p class="about-lead" data-i18n="aboutLead">Lubię, kiedy rzeczy dobrze wyglądają. Jeszcze bardziej — kiedy mają sens.</p>

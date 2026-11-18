@@ -10,11 +10,11 @@ const copy = {
     workIntro: 'Różne media. Ten sam głód dobrych pomysłów. Koncepcje, eksperymenty i projekty wizualne.',
     archiveEnd: 'Zawsze jest miejsce na kolejny dobry pomysł.', startProject: 'Może Twój? ↗',
     aboutEyebrow: 'Kilka słów o mnie', aboutTitle: 'Estetyka z', aboutItalic: 'intencją.',
-    labTitle: 'Jak projektuję', labStructure: 'Struktura', labCharacter: 'Charakter', labRhythm: 'Rytm', labView: 'Zobacz',
-    labNotes: {
-      structure: 'Zaczynam od uporządkowania informacji, żeby od razu było jasne, co zrobić dalej.',
-      character: 'Buduję charakter marki z kroju pisma, palety i detali, które zostają w pamięci.',
-      rhythm: 'Przeplatam duże obrazy z chwilami oddechu, żeby prowadzić wzrok przez stronę.'
+    poster: {
+      make: 'Stwórz plakat', again: 'Stwórz kolejny plakat',
+      hint: 'Stuknij w komputer, żeby stworzyć plakat.', nextHint: 'Stuknij ponownie po kolejny plakat.',
+      created: 'Gotowy plakat',
+      titles: { welcome: 'Mała pracownia plakatów', bloom: 'Cichy rozkwit', heart: 'Mała radość', orbit: 'Słodka orbita', cat: 'Kocia drzemka' }
     },
     aboutLead: 'Lubię, kiedy rzeczy dobrze wyglądają. Jeszcze bardziej — kiedy mają sens.',
     aboutText: 'Pracuję nad projektami wizualnymi, które łączą estetykę z porządkiem. Interesuje mnie design, który nie potrzebuje nadmiaru efektów, żeby wyglądać pewnie.',
@@ -42,11 +42,11 @@ const copy = {
     workIntro: 'Different media. The same appetite for good ideas. Concepts, experiments and visual projects.',
     archiveEnd: 'There’s always room for another good idea.', startProject: 'Maybe yours? ↗',
     aboutEyebrow: 'A little about me', aboutTitle: 'Aesthetics with', aboutItalic: 'intention.',
-    labTitle: 'How I design', labStructure: 'Structure', labCharacter: 'Character', labRhythm: 'Rhythm', labView: 'See',
-    labNotes: {
-      structure: 'I start by organizing information so the next step is clear.',
-      character: 'I build a brand’s character through type, color and details that stay with you.',
-      rhythm: 'I alternate large images with breathing room to guide the eye down the page.'
+    poster: {
+      make: 'Make a poster', again: 'Make another poster',
+      hint: 'Tap the computer to make a poster.', nextHint: 'Tap again for another poster.',
+      created: 'Poster ready',
+      titles: { welcome: 'Mini poster studio', bloom: 'Soft Bloom', heart: 'Small Joy', orbit: 'Sweet Orbit', cat: 'Cat Nap' }
     },
     aboutLead: 'I like things that look good. Even more so when they make sense.',
     aboutText: 'I work on visual projects that combine aesthetics with order. I am interested in design that does not need excessive effects to feel confident.',
@@ -76,13 +76,13 @@ const projectDialog = document.getElementById('project-dialog');
 const imageDialog = document.getElementById('image-dialog');
 const gallery = document.getElementById('project-gallery');
 const fullImage = document.getElementById('full-image');
-const designLab = document.getElementById('design-lab');
-const labControls = document.getElementById('design-lab-controls');
-const labButtons = labControls.querySelectorAll('button');
-const labNote = document.getElementById('design-lab-note');
-const labProject = document.getElementById('design-lab-project');
-const labProjectLabel = document.getElementById('design-lab-project-label');
-const labProjects = { structure: '02', character: '11', rhythm: '13' };
+const posterMachine = document.getElementById('poster-machine');
+const posterPreview = document.getElementById('poster-preview');
+const posterTitle = document.getElementById('poster-title');
+const posterInstruction = document.getElementById('poster-instruction');
+const posterAnnouncement = document.getElementById('poster-announcement');
+const posterDesigns = ['bloom', 'heart', 'orbit', 'cat'];
+let posterIndex = -1;
 let language = 'pl';
 let category = 'all';
 let selectedProject = null;
@@ -102,12 +102,13 @@ function thumbnail(project) {
   if (source && typeof source !== 'string') return source.preview || source.src;
   return source ? `assets/previews/${source.replace(/\.[^.]+$/, '')}.webp` : null;
 }
-function updateDesignLab() {
-  const lens = designLab.dataset.lens;
-  const project = projects.find(item => item.number === labProjects[lens]);
-  labButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.lensOption === lens)));
-  labNote.textContent = copy[language].labNotes[lens];
-  labProjectLabel.textContent = `${copy[language].labView} ${localize(project.short)}`;
+function renderPoster() {
+  const { poster } = copy[language];
+  const design = posterDesigns[posterIndex];
+  posterPreview.dataset.poster = design ?? 'welcome';
+  posterTitle.textContent = poster.titles[posterPreview.dataset.poster];
+  posterMachine.setAttribute('aria-label', design ? poster.again : poster.make);
+  posterInstruction.textContent = design ? poster.nextHint : poster.hint;
 }
 
 function updateLanguage() {
@@ -122,7 +123,7 @@ function updateLanguage() {
   document.querySelector('.navigation').setAttribute('aria-label', copy[language].navLabel);
   filters.setAttribute('aria-label', copy[language].filterLabel);
   imageDialog.setAttribute('aria-label', copy[language].imagePreview);
-  updateDesignLab();
+  renderPoster();
   renderFilters();
   renderGrid();
 }
@@ -248,13 +249,13 @@ document.querySelectorAll('[data-lang]').forEach(button => button.addEventListen
   updateLanguage();
 }));
 document.querySelectorAll('.art-piece').forEach(button => button.addEventListener('click', () => openProject(button.dataset.project)));
-labButtons.forEach(button => button.addEventListener('click', () => {
-  designLab.dataset.lens = button.dataset.lensOption;
-  updateDesignLab();
-}));
-labProject.addEventListener('click', () => openProject(labProjects[designLab.dataset.lens]));
-labControls.hidden = false;
-labProject.hidden = false;
+posterMachine.addEventListener('click', () => {
+  posterIndex = (posterIndex + 1) % posterDesigns.length;
+  renderPoster();
+  posterAnnouncement.textContent = `${copy[language].poster.created}. ${posterTitle.textContent}.`;
+});
+posterMachine.disabled = false;
+document.getElementById('poster-hint').hidden = false;
 document.getElementById('close-project').addEventListener('click', () => projectDialog.close());
 document.getElementById('close-image').addEventListener('click', () => imageDialog.close());
 document.getElementById('next-project').addEventListener('click', () => {
