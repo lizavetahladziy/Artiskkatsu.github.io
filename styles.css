@@ -186,13 +186,6 @@ em {
   text-underline-offset:.3em
 }
 
-sup {
-  font-size:var(--type-base);
-  font-weight:400;
-  vertical-align:super;
-  letter-spacing:0
-}
-
 .language-switch {
   display:flex;
   gap:3px;
@@ -434,13 +427,6 @@ h1 em {
   margin-top:14px
 }
 
-.section-heading h2 sup {
-  vertical-align:top;
-  margin-left:12px;
-  display:inline-block;
-  padding-top:12px
-}
-
 .section-heading>p {
   font-size:var(--type-action);
   line-height:1.55;
@@ -554,16 +540,6 @@ h1 em {
   inset:0;
   border:1px solid #24231f08;
   pointer-events:none
-}
-
-.project-number {
-  position:absolute;
-  top:15px;
-  left:17px;
-  z-index:1;
-  background:var(--paper);
-  padding:4px 8px;
-  border-radius:2px
 }
 
 .project-open {

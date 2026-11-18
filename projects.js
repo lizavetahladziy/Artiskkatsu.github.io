@@ -1,6 +1,56 @@
 // Original project content and gallery ordering, retained from the portfolio.
 const projectData = [
       {
+        number: '13',
+        category: 'web',
+        short: { pl: 'FLORE Studio', en: 'FLORE Studio' },
+        title: { pl: 'FLORE Studio — strona studia florystycznego', en: 'FLORE Studio — floral atelier website' },
+        type: { pl: 'Projekt strony', en: 'Website design' },
+        label: { pl: 'FLORE Studio', en: 'FLORE Studio' },
+        description: {
+          pl: 'Koncepcja strony internetowej dla studia florystycznego. Projekt łączy sezonowy katalog bukietów z historią pracowni, ofertą kompozycji na zamówienie i dziennikiem marki.',
+          en: 'A website concept for a floral atelier. The design brings together the seasonal bouquet collection, the atelier’s story, custom arrangements and the studio journal.'
+        },
+        facts: { pl: ['web design', 'e-commerce', 'art direction'], en: ['web design', 'e-commerce', 'art direction'] },
+        color: '#e3e6dc',
+        thumbnail: 'assets/flore/cover.webp',
+        gallery: [
+          { src: 'assets/flore/editorial-hero.jpg', preview: 'assets/flore/editorial-hero.webp', width: 2240, height: 1226 },
+          { src: 'assets/flore/seasonal-collection.jpg', preview: 'assets/flore/seasonal-collection.webp', width: 2240, height: 1510 },
+          { src: 'assets/flore/atelier-story.jpg', preview: 'assets/flore/atelier-story.webp', width: 2240, height: 964 },
+          { src: 'assets/flore/flowers-for-every-feeling.jpg', preview: 'assets/flore/flowers-for-every-feeling.webp', width: 2240, height: 688 },
+          { src: 'assets/flore/custom-bouquet-invitation.jpg', preview: 'assets/flore/custom-bouquet-invitation.webp', width: 2240, height: 887 },
+          { src: 'assets/flore/client-love-note.jpg', preview: 'assets/flore/client-love-note.webp', width: 2240, height: 622 },
+          { src: 'assets/flore/field-notes.jpg', preview: 'assets/flore/field-notes.webp', width: 2240, height: 1078 },
+          { src: 'assets/flore/newsletter-invitation.jpg', preview: 'assets/flore/newsletter-invitation.webp', width: 2240, height: 428 },
+          { src: 'assets/flore/site-footer.jpg', preview: 'assets/flore/site-footer.webp', width: 2240, height: 947 }
+        ],
+        galleryAlt: {
+          pl: [
+            'FLORE Studio — ekran otwierający z kompozycją róż.',
+            'Kolekcja sezonowa — trzy bukiety z nazwami i cenami.',
+            'Historia pracowni — florystka układa jasny bukiet.',
+            'Kwiaty na różne okazje — urodziny, miłość i drobne gesty.',
+            'Bukiet na zamówienie — zaproszenie do stworzenia własnej kompozycji.',
+            'Opinia klientki — cytat i ocena studia.',
+            'Dziennik FLORE — dwa artykuły z fotografiami kwiatów.',
+            'Zaproszenie do newslettera Letters, in bloom.',
+            'Stopka — nawigacja, dane kontaktowe i logotyp FLORE.'
+          ],
+          en: [
+            'FLORE Studio — opening screen with an arrangement of roses.',
+            'Seasonal collection — three bouquets with names and prices.',
+            'Atelier story — a florist arranging a light-colored bouquet.',
+            'Flowers for every feeling — birthdays, romance and small gestures.',
+            'Custom bouquet invitation — an invitation to create a personal arrangement.',
+            'Client love note — a testimonial and studio rating.',
+            'Field notes — two articles from the FLORE journal with floral photography.',
+            'Newsletter invitation — Letters, in bloom.',
+            'Site footer — navigation, contact information and the FLORE wordmark.'
+          ]
+        }
+      },
+      {
         number: '01',
         category: 'web',
         short: { pl: 'Sklep', en: 'Store' },

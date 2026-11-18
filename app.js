@@ -46,7 +46,7 @@ const copy = {
 };
 
 const categoryOrder = ['all', 'web', 'identity', 'editorial', 'presentation', 'packaging', 'edits'];
-const displayOrder = ['11', '06', '04', '02', '10', '07', '01', '08', '12', '03', '09'];
+const displayOrder = ['13', '11', '06', '04', '02', '10', '07', '01', '08', '12', '03', '09'];
 const projects = displayOrder.map(number => projectData.find(project => project.number === number));
 const grid = document.getElementById('project-grid');
 const filters = document.getElementById('filters');
@@ -68,7 +68,9 @@ function makeElement(tag, className, text) {
   return element;
 }
 function thumbnail(project) {
+  if (project.thumbnail) return project.thumbnail;
   const source = project.previewImage || project.image || project.gallery?.[0];
+  if (source && typeof source !== 'string') return source.preview || source.src;
   return source ? `assets/previews/${source.replace(/\.[^.]+$/, '')}.webp` : null;
 }
 function updateLanguage() {
@@ -128,7 +130,7 @@ function renderGrid() {
       cover.append(makeElement('small', '', 'MOTION / VIDEO EDIT'), makeElement('strong', '', 'forestrock.tv'), makeElement('span', 'play-icon', '↗'));
       visual.append(cover);
     }
-    visual.append(makeElement('span', 'project-number', project.number), makeElement('span', 'project-open', '↗'));
+    visual.append(makeElement('span', 'project-open', '↗'));
     visual.setAttribute('aria-hidden', 'true');
     const info = makeElement('div', 'project-card-info');
     info.append(makeElement('h3', '', localize(project.short)), makeElement('p', '', localize(project.type)));
@@ -144,7 +146,7 @@ function openProject(number) {
   if (!project) return;
   gallery.querySelectorAll('video').forEach(video => video.pause());
   selectedProject = project;
-  document.getElementById('project-label').textContent = `${project.number} / ${localize(project.short)}`;
+  document.getElementById('project-label').textContent = localize(project.short);
   document.getElementById('project-category').textContent = copy[language].categories[project.category];
   document.getElementById('project-title').textContent = localize(project.title);
   document.getElementById('project-description').textContent = localize(project.description);
@@ -165,20 +167,25 @@ function openProject(number) {
     gallery.append(video);
   } else {
     const images = project.gallery || [project.previewImage || project.image];
-    images.forEach((source, index) => {
+    images.forEach((entry, index) => {
+      const { src, preview = src, width, height } = typeof entry === 'string' ? { src: entry } : entry;
       const item = makeElement('div', 'gallery-item');
       const button = makeElement('button', 'gallery-image');
       button.type = 'button';
       const alt = project.galleryAlt?.[language]?.[index] || `${localize(project.title)} — ${index + 1}`;
       button.setAttribute('aria-label', `${copy[language].zoom}: ${alt}`);
       const image = makeElement('img');
-      image.src = source;
+      image.src = preview;
       image.alt = alt;
+      if (width && height) {
+        image.width = width;
+        image.height = height;
+      }
       image.loading = index === 0 ? 'eager' : 'lazy';
       image.decoding = 'async';
       button.append(image);
       button.addEventListener('click', () => {
-        fullImage.src = source;
+        fullImage.src = src;
         fullImage.alt = alt;
         imageDialog.showModal();
         syncScrollLock();
