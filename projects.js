@@ -83,7 +83,6 @@ const projectData = [
           { src: 'assets/updated-projects/chota-hero.jpg', width: 1280, height: 726 },
           { src: 'assets/updated-projects/chota-knowledge-base.jpg', width: 1023, height: 321 },
           { src: 'assets/updated-projects/chota-demo.jpg', width: 1280, height: 341 },
-          { src: 'assets/updated-projects/chota-document-visual.jpg', width: 1280, height: 726 },
           { src: 'assets/updated-projects/chota-sign-in.jpg', width: 1280, height: 888 }
         ],
         galleryAlt: {
@@ -91,14 +90,12 @@ const projectData = [
             'Logo Chota z ilustracjami dokumentów.',
             'Sekcja o bazie wiedzy Chota.',
             'Demonstracja odpowiedzi z odnośnikami do źródeł.',
-            'Ilustracja plików obsługiwanych przez Chota.',
             'Ekran logowania Chota.'
           ],
           en: [
             'Chota logo with illustrations of documents.',
             'Chota knowledge base section.',
             'Demo answer with references to sources.',
-            'Illustration of document types supported by Chota.',
             'Chota sign-in screen.'
           ]
         },
