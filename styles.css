@@ -141,18 +141,7 @@ em {
   font-size:48px;
   letter-spacing:-7px;
   line-height:1;
-  position:relative;
   width:54px
-}
-
-.monogram>span {
-  font-family:Arial,sans-serif;
-  font-size:var(--type-base);
-  letter-spacing:0;
-  position:absolute;
-  top:0;
-  right:0;
-  color:var(--purple)
 }
 
 .brand-name {
@@ -261,14 +250,6 @@ h1 em {
   color:var(--purple)
 }
 
-.heading-dot {
-  font-size:max(var(--type-base),.62em);
-  vertical-align:top;
-  color:var(--purple);
-  display:inline-block;
-  transform:translate(5px,-4px)
-}
-
 .hero-description {
   font-size:var(--type-lead);
   line-height:1.55;
@@ -296,6 +277,49 @@ h1 em {
   border:0;
   margin-top:24px;
   gap:20px
+}
+
+.arrow-icon {
+  position:relative;
+  display:inline-block;
+  flex:none;
+  width:1em;
+  height:1em;
+  transform:rotate(var(--arrow-angle,0deg))
+}
+
+.arrow-icon::before,.arrow-icon::after {
+  position:absolute;
+  border-top:max(1.5px,.08em) solid currentColor;
+  content:''
+}
+
+.arrow-icon::before {
+  top:50%;
+  left:50%;
+  width:100%;
+  transform:translate(-50%,-50%) rotate(-45deg)
+}
+
+.arrow-icon::after {
+  top:13%;
+  right:13%;
+  width:47%;
+  height:47%;
+  box-sizing:border-box;
+  border-right:max(1.5px,.08em) solid currentColor
+}
+
+.arrow-icon--up {
+  --arrow-angle:-45deg
+}
+
+.arrow-icon--down {
+  --arrow-angle:135deg
+}
+
+.arrow-icon--right {
+  --arrow-angle:45deg
 }
 
 .circle-arrow {
@@ -370,27 +394,21 @@ h1 em {
   z-index:4;
   right:-2%;
   bottom:14%;
-  width:112px;
-  height:112px;
+  width:104px;
+  height:104px;
+  padding:4px;
+  display:grid;
+  place-items:center;
+  border:1px solid #cfc5df;
   border-radius:50%;
-  background:var(--lime);
-  font-size:19px;
-  line-height:1.08;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  transform:rotate(12deg);
+  background:#eee8f5;
+  color:#47386b;
+  font-size:var(--type-base);
+  line-height:1.15;
+  text-align:center;
+  text-wrap:balance;
+  transform:rotate(8deg);
   pointer-events:none
-}
-
-.design-sticker em {
-  font-size:22px
-}
-
-.design-sticker>span {
-  font-size:23px;
-  margin-top:7px
 }
 
 .hero-bottom {
@@ -622,12 +640,10 @@ h1 em {
   color:var(--muted)
 }
 
-.archive-end>span {
-  color:var(--purple);
-  font-size:28px
-}
-
 .archive-end>a {
+  display:inline-flex;
+  align-items:center;
+  gap:.45em;
   margin-left:auto;
   color:var(--ink);
   border-bottom:1px solid var(--ink);
@@ -918,18 +934,6 @@ h1 em {
   padding-block:80px 65px
 }
 
-.contact-topline {
-  display:flex;
-  justify-content:space-between;
-  align-items:center
-}
-
-.contact-star {
-  font-size:62px;
-  color:var(--purple);
-  line-height:1
-}
-
 .contact-section h2 {
   font-size:clamp(62px,9vw,134px);
   letter-spacing:-.065em;
@@ -972,6 +976,10 @@ h1 em {
   color:var(--muted)
 }
 
+.contact-arrow .arrow-icon {
+  font-size:.61em
+}
+
 .email-link {
   font-size:clamp(var(--type-action),2vw,30px);
   letter-spacing:-.035em;
@@ -1012,6 +1020,7 @@ h1 em {
   min-height:44px;
   display:flex;
   align-items:center;
+  gap:.35em;
   color:var(--ink)
 }
 
@@ -1183,6 +1192,9 @@ dialog::backdrop {
 }
 
 .gallery-zoom {
+  display:inline-flex;
+  align-items:center;
+  gap:.35em;
   margin-left:auto;
   color:var(--ink)
 }
@@ -1268,14 +1280,6 @@ dialog::backdrop {
     width:92px;
     height:92px;
     bottom:13%
-  }
-
-  .design-sticker em {
-    font-size:18px
-  }
-
-  .design-sticker>span {
-    font-size:18px
   }
 
   .about-inner {
@@ -1437,10 +1441,6 @@ dialog::backdrop {
     font-size:.88em
   }
 
-  .heading-dot {
-    font-size:max(var(--type-base),.5em)
-  }
-
   .hero-description {
     margin-top:22px
   }
@@ -1534,12 +1534,8 @@ dialog::backdrop {
     gap:8px 13px
   }
 
-  .archive-end>p {
-    max-width:220px
-  }
-
   .archive-end>a {
-    margin-left:40px
+    margin-left:0
   }
 
   .about-inner {
@@ -1560,10 +1556,6 @@ dialog::backdrop {
   .contact-section {
     padding-top:52px;
     padding-bottom:45px
-  }
-
-  .contact-star {
-    font-size:40px
   }
 
   .contact-section h2 {

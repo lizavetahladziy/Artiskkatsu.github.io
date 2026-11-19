@@ -5,10 +5,10 @@ const copy = {
     skip: 'Przejdź do projektów', navWork: 'Projekty', navAbout: 'O mnie', navContact: 'Kontakt', navLabel: 'Menu główne',
     heroLineOne: 'Dobry design.', heroLineTwo: 'Własny charakter.',
     heroText: 'Łączę wyrazisty obraz z przemyślaną strukturą. Projektuję strony, identyfikacje i rzeczy, którym warto przyjrzeć się bliżej.',
-    viewWork: 'Zobacz moje prace', heroCaption: 'Mały wgląd w mój świat.', heroFooter: 'Pomysł. Forma. Charakter.',
+    viewWork: 'Zobacz moje prace', projectPreviews: 'Podgląd prac', heroCaption: 'Mały wgląd w mój świat.', heroFooter: 'Pomysł. Forma. Charakter.',
     workEyebrow: 'Portfolio', workTitle: 'Wybrane', workTitleItalic: 'prace.',
     workIntro: 'Różne media. Ten sam głód dobrych pomysłów. Koncepcje, eksperymenty i projekty wizualne.',
-    archiveEnd: 'Zawsze jest miejsce na kolejny dobry pomysł.', startProject: 'Może Twój? ↗',
+    archiveEnd: 'Zawsze jest miejsce na kolejny dobry pomysł.', startProject: 'Może Twój?',
     aboutEyebrow: 'Kilka słów o mnie', aboutTitle: 'Estetyka z', aboutItalic: 'intencją.',
     catHint: 'Stuknij, by zmienić pozę Mei Mei.',
     catHoverHint: 'Najedź, by się pobawić. Kliknij, by zmienić pozę Mei Mei.',
@@ -30,7 +30,7 @@ const copy = {
     toolkit: 'Mój warsztat', viewCv: 'Zajrzyj do mojego CV',
     contactEyebrow: 'Kontakt', contactTitle: 'Zróbmy coś', contactItalic: 'dobrego.',
     contactText: 'Masz pomysł, pytanie albo po prostu chcesz się przywitać? Napisz do mnie.',
-    backTop: 'Do góry ↑', footerNote: 'Z pomysłem. I charakterem.', close: 'Zamknij', openSite: 'Otwórz stronę',
+    backTop: 'Do góry', footerNote: 'Z pomysłem. I charakterem.', close: 'Zamknij', openSite: 'Otwórz stronę',
     moreWork: 'Jeszcze trochę inspiracji?', next: 'Następny projekt', zoom: 'Powiększ obraz', openProject: 'Otwórz projekt',
     imagePreview: 'Podgląd obrazu', filterLabel: 'Kategorie projektów', countLabel: 'projektów',
     description: 'Lizaveta Hladziy — portfolio projektantki wizualnej. Web design, identyfikacja wizualna, editorial i opakowania.',
@@ -40,10 +40,10 @@ const copy = {
     skip: 'Skip to projects', navWork: 'Work', navAbout: 'About', navContact: 'Contact', navLabel: 'Main navigation',
     heroLineOne: 'Good design.', heroLineTwo: 'A little character.',
     heroText: 'I bring bold visuals and thoughtful structure together. Designing websites, identities and things worth a closer look.',
-    viewWork: 'Explore my work', heroCaption: 'A little glimpse into my world.', heroFooter: 'Idea. Form. Character.',
+    viewWork: 'Explore my work', projectPreviews: 'Project previews', heroCaption: 'A little glimpse into my world.', heroFooter: 'Idea. Form. Character.',
     workEyebrow: 'Portfolio', workTitle: 'Selected', workTitleItalic: 'work.',
     workIntro: 'Different media. The same appetite for good ideas. Concepts, experiments and visual projects.',
-    archiveEnd: 'There’s always room for another good idea.', startProject: 'Maybe yours? ↗',
+    archiveEnd: 'There’s always room for another good idea.', startProject: 'Maybe yours?',
     aboutEyebrow: 'A little about me', aboutTitle: 'Aesthetics with', aboutItalic: 'intention.',
     catHint: 'Tap to change Mei Mei’s pose.',
     catHoverHint: 'Hover to play. Click to change Mei Mei’s pose.',
@@ -65,7 +65,7 @@ const copy = {
     toolkit: 'My toolkit', viewCv: 'Take a look at my CV',
     contactEyebrow: 'Get in touch', contactTitle: 'Let’s make', contactItalic: 'something good.',
     contactText: 'Have an idea, a question, or just want to say hello? I’d love to hear from you.',
-    backTop: 'Back to top ↑', footerNote: 'Made with thought. And character.', close: 'Close', openSite: 'Open website',
+    backTop: 'Back to top', footerNote: 'Made with thought. And character.', close: 'Close', openSite: 'Open website',
     moreWork: 'A little more inspiration?', next: 'Next project', zoom: 'Enlarge image', openProject: 'Open project',
     imagePreview: 'Image preview', filterLabel: 'Project categories', countLabel: 'projects',
     description: 'Lizaveta Hladziy — visual designer portfolio. Web design, visual identity, editorial and packaging.',
@@ -180,8 +180,9 @@ function renderGrid() {
     const info = makeElement('div', 'project-card-info');
     const title = makeElement('div');
     title.append(makeElement('h3', '', localize(project.short)), makeElement('p', '', localize(project.type)));
-    const arrow = makeElement('span', 'project-open', '↗');
+    const arrow = makeElement('span', 'project-open');
     arrow.setAttribute('aria-hidden', 'true');
+    arrow.append(makeElement('span', 'arrow-icon'));
     info.append(title, arrow);
     button.append(visual, info);
     button.addEventListener('click', () => openProject(project.number));
@@ -247,7 +248,11 @@ function openProject(number) {
         summary.append(makeElement('span', 'gallery-position', `${String(index + 1).padStart(2, '0')} / ${String(images.length).padStart(2, '0')}`));
       }
       if (description) summary.append(makeElement('span', '', description));
-      caption.append(summary, makeElement('span', 'gallery-zoom', `${copy[language].zoom} ↗`));
+      const zoom = makeElement('span', 'gallery-zoom', copy[language].zoom);
+      const zoomArrow = makeElement('span', 'arrow-icon');
+      zoomArrow.setAttribute('aria-hidden', 'true');
+      zoom.append(zoomArrow);
+      caption.append(summary, zoom);
       button.append(frame, caption);
       gallery.append(button);
     });
